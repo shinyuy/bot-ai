@@ -13,14 +13,14 @@ import { Button } from "./ui/button";
 import { toast } from "./ui/use-toast";
 import FileUpload from "./file";
 import DataSource from "./data-source";
-import ApplicantInfo from "./applicant-info";
+import CompanyInfo from "./company-info";
 import EmploymentInfo from "./employment-info";
 import FinancialInfo from "./financial-info";
 import LoanDetails from "./loan-details";
 
 
 const STEPPER_FORM_KEYS = {
-  1: ['fullName', 'dob', 'email', 'phone'],
+  1: ['name', 'website', 'country', 'phone'],
   2: ['address', 'city', 'state', 'zipCode'],
   3: ['employmentStatus', 'employerName', 'jobTitle', 'annualIncome'],
   4: ['loanAmount', 'loanPurpose', 'repaymentTerms', 'repaymentStartDate'],
@@ -31,7 +31,7 @@ const STEPPER_FORM_KEYS = {
 function getStepContent(step: number) {
   switch (step) {
     case 1:
-      return <ApplicantInfo />;
+      return <CompanyInfo />;
     case 2:
       return <DataSource />;
     case 3:

@@ -1,5 +1,5 @@
 export const STEPPER_FORM_KEYS = {
-  1: ['fullName', 'dob', 'email', 'phone'],
+  1: ['name', 'website', 'country', 'phone'],
   2: ['address', 'city', 'state', 'zipCode'],
   3: ['employmentStatus', 'employerName', 'jobTitle', 'annualIncome'], 
   4: ['loanAmount', 'loanPurpose', 'repaymentTerms', 'repaymentStartDate'],

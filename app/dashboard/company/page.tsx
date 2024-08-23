@@ -33,21 +33,6 @@ export default function Page() {
                 <h1 className="text-center font-bold text-[24px] mb-[50px]">Create a Chatbot</h1>
                 <HookMultiStepForm />
             </div>
-
-
-
-
-
-
-            {/* <CompanyForm />
-            <File
-                imagesHandler={(images) => imagesHandler(images)}
-                reset={false}
-                company={company}
-                setCompany={setCompany}
-                setDone={setDone}
-                files={[]}
-            /> */}
         </div>
     );
 }
