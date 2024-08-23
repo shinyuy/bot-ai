@@ -1,11 +1,11 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from 'react-hook-form';
 
-import { validateEmail } from "../../../utils";
-import { StepperFormValues } from "../../types/hook-stepper";
+import { validateEmail } from '../../../utils';
+import { StepperFormValues } from '../../types/hook-stepper';
 
-import { DatePickerSingle } from "./ui/date-picker-single";
-import { FloatingLabelInput } from "./ui/floating-input";
-import data from "../../../utils/countries.json"
+import { DatePickerSingle } from './ui/date-picker-single';
+import { FloatingLabelInput } from './ui/floating-input';
+import data from '../../../utils/countries.json';
 
 import {
   Select,
@@ -15,7 +15,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from './ui/select';
 
 const ApplicantInfo = () => {
   const {
@@ -26,21 +26,21 @@ const ApplicantInfo = () => {
   } = useFormContext<StepperFormValues>();
 
   return (
-    <div className="flex flex-col w-full items-center min-h-80">
+    <div className="flex min-h-80 w-full flex-col items-center">
       <h4 className="stepper_step_heading my-8">Company Information</h4>
       <div className="stepper_step_container w-3/4">
         <FloatingLabelInput
           id="name"
           label="Name of company"
-          {...register("name", { required: "Required" })}
+          {...register('name', { required: 'Required' })}
           error={errors.name?.message}
         />
         <FloatingLabelInput
           id="website"
           label="Company website"
           // type="website"
-          {...register("website", {
-            required: "Required"
+          {...register('website', {
+            required: 'Required',
           })}
           error={errors.website?.message}
         />
@@ -48,7 +48,7 @@ const ApplicantInfo = () => {
           id="phone"
           label="Phone Number"
           type="tel"
-          {...register("phone", { required: "Required" })}
+          {...register('phone', { required: 'Required' })}
           error={errors.phone?.message}
         />
         {/* <FloatingLabelInput
@@ -59,39 +59,35 @@ const ApplicantInfo = () => {
           error={errors.country?.message}
         /> */}
 
-
         <Controller
           name="country"
-          rules={{ required: "Required" }}
+          rules={{ required: 'Required' }}
           control={control}
-          render={({
-            field: { onChange, value, onBlur },
-            fieldState: { invalid, error },
-          }) => (
+          render={({ field: { onChange, value, onBlur }, fieldState: { invalid, error } }) => (
             <div className="bg-white">
               <Select
                 onValueChange={(value) => {
-                  console.log(value)
+                  console.log(value);
                   onChange(value);
-                  trigger(["name", "website", "phone"]);
+                  trigger(['name', 'website', 'phone']);
                 }}
                 value={value}
                 onOpenChange={(value) => !value && onBlur()}
               >
-                <SelectTrigger
-                  name="country"
-                  floatingLabel="Country"
-                >
+                <SelectTrigger name="country" floatingLabel="Country">
                   <SelectValue className="text-black" placeholder="Select country" />
                 </SelectTrigger>
                 {invalid && (
-                  <span className="text-destructive block !mt-[5px] text-[12px]">
+                  <span className="text-destructive !mt-[5px] block text-[12px]">
                     {error?.message}
                   </span>
                 )}
                 <SelectContent>
-                  {data.countries?.map((country, i) => <SelectItem key={i} value={country.name} className="text-black">{country.name}</SelectItem>)}
-
+                  {data.countries?.map((country, i) => (
+                    <SelectItem key={i} value={country.name} className="text-black">
+                      {country.name}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>

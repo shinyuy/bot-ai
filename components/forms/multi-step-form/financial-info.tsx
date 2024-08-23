@@ -1,8 +1,8 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext } from 'react-hook-form';
 
-import { StepperFormValues } from "../../types/hook-stepper";
+import { StepperFormValues } from '../../types/hook-stepper';
 
-import { FloatingLabelInput } from "./ui/floating-input";
+import { FloatingLabelInput } from './ui/floating-input';
 
 const FinancialInfo = () => {
   const {
@@ -18,29 +18,29 @@ const FinancialInfo = () => {
           id="bankName"
           label="Bank Name"
           type="text"
-          {...register("bankName", { required: "Required" })}
+          {...register('bankName', { required: 'Required' })}
           error={errors.bankName?.message}
         />
         <FloatingLabelInput
           id="accountNumber"
           label="Account Number"
           type="number"
-          {...register("accountNumber", { required: "Required" })}
+          {...register('accountNumber', { required: 'Required' })}
           error={errors.accountNumber?.message}
         />
         <FloatingLabelInput
           id="routingNumber"
           label="Routing Number"
           type="text"
-          {...register("routingNumber", { required: "Required" })}
+          {...register('routingNumber', { required: 'Required' })}
           error={errors.routingNumber?.message}
         />
         <FloatingLabelInput
           id="creditScore"
           label="Credit Score"
           type="number"
-          {...register("creditScore", {
-            required: "Required",
+          {...register('creditScore', {
+            required: 'Required',
             valueAsNumber: true,
           })}
           error={errors.creditScore?.message}

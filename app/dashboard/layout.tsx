@@ -6,22 +6,22 @@ import HeaderMobile from '../../components/common/header-mobile';
 import PageWrapper from '../../components/common/page-wrapper';
 
 interface Props {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export default function Layout({ children }: Props) {
-	return (
-		<RequireAuth>
-			<div className="flex">
-				<SideNav />
-				<main className="flex-1">
-					<MarginWidthWrapper>
-						<Header />
-						<HeaderMobile />
-						<PageWrapper>{children}</PageWrapper>
-					</MarginWidthWrapper>
-				</main>
-			</div>
-		</RequireAuth>
-	)
+  return (
+    <RequireAuth>
+      <div className="flex">
+        <SideNav />
+        <main className="flex-1">
+          <MarginWidthWrapper>
+            <Header />
+            <HeaderMobile />
+            <PageWrapper>{children}</PageWrapper>
+          </MarginWidthWrapper>
+        </main>
+      </div>
+    </RequireAuth>
+  );
 }

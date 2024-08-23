@@ -1,23 +1,22 @@
-"use client";
+'use client';
 
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
-import { useEffect, useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import { useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 
 // import { STEPPER_FORM_KEYS } from "@/lib/constants/hook-stepper-constants";
-import { StepperFormKeysType, StepperFormValues } from "../../types/hook-stepper";
+import { StepperFormKeysType, StepperFormValues } from '../../types/hook-stepper';
 
-import StepperIndicator from "./stepper-indicator";
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import { Button } from "./ui/button";
-import { toast } from "./ui/use-toast";
-import FileUpload from "./file";
-import DataSource from "./data-source";
-import CompanyInfo from "./company-info";
-import EmploymentInfo from "./employment-info";
-import FinancialInfo from "./financial-info";
-import LoanDetails from "./loan-details";
-
+import StepperIndicator from './stepper-indicator';
+import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+import { Button } from './ui/button';
+import { toast } from './ui/use-toast';
+import FileUpload from './file';
+import DataSource from './data-source';
+import CompanyInfo from './company-info';
+import EmploymentInfo from './employment-info';
+import FinancialInfo from './financial-info';
+import LoanDetails from './loan-details';
 
 const STEPPER_FORM_KEYS = {
   1: ['name', 'website', 'country', 'phone'],
@@ -26,7 +25,6 @@ const STEPPER_FORM_KEYS = {
   4: ['loanAmount', 'loanPurpose', 'repaymentTerms', 'repaymentStartDate'],
   5: ['bankName', 'accountNumber', 'routingNumber', 'creditScore'],
 } as const;
-
 
 function getStepContent(step: number) {
   switch (step) {
@@ -41,15 +39,15 @@ function getStepContent(step: number) {
     case 5:
       return <FinancialInfo />;
     default:
-      return "Unknown step";
+      return 'Unknown step';
   }
 }
 
 const HookMultiStepForm = () => {
   const [activeStep, setActiveStep] = useState(1);
-  const [erroredInputName, setErroredInputName] = useState("");
+  const [erroredInputName, setErroredInputName] = useState('');
   const methods = useForm<StepperFormValues>({
-    mode: "onTouched",
+    mode: 'onTouched',
   });
 
   const {
@@ -61,11 +59,10 @@ const HookMultiStepForm = () => {
 
   // focus errored input on submit
   useEffect(() => {
-    const erroredInputElement =
-      document.getElementsByName(erroredInputName)?.[0];
+    const erroredInputElement = document.getElementsByName(erroredInputName)?.[0];
     if (erroredInputElement instanceof HTMLInputElement) {
       erroredInputElement.focus();
-      setErroredInputName("");
+      setErroredInputName('');
     }
   }, [erroredInputName]);
 
@@ -79,7 +76,7 @@ const HookMultiStepForm = () => {
         //   description: "Form submitted successfully",
         // });
         reject({
-          message: "There was an error submitting form",
+          message: 'There was an error submitting form',
           // message: "Field error",
           // errorKey: "fullName",
         });
@@ -112,7 +109,7 @@ const HookMultiStepForm = () => {
           });
           setErroredInputName(errorKey);
         } else {
-          setError("root.formError", {
+          setError('root.formError', {
             message: errorMessage,
           });
         }
@@ -139,9 +136,9 @@ const HookMultiStepForm = () => {
         </Alert>
       )}
       <FormProvider {...methods}>
-        <form noValidate className="w-full flex-col flex items-center">
+        <form noValidate className="flex w-full flex-col items-center">
           {getStepContent(activeStep)}
-          <div className="flex justify-between w-3/4 space-x-[20px]">
+          <div className="flex w-3/4 justify-between space-x-[20px]">
             <Button
               type="button"
               className="w-[100px] bg-black text-white"

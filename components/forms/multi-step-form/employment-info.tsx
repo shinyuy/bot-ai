@@ -1,8 +1,8 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from 'react-hook-form';
 
-import { StepperFormValues } from "../../types/hook-stepper";
+import { StepperFormValues } from '../../types/hook-stepper';
 
-import { FloatingLabelInput } from "./ui/floating-input";
+import { FloatingLabelInput } from './ui/floating-input';
 import {
   Select,
   SelectContent,
@@ -11,10 +11,9 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from './ui/select';
 
 const EmploymentInfo = () => {
-
   const {
     control,
     trigger,
@@ -28,29 +27,23 @@ const EmploymentInfo = () => {
       <div className="stepper_step_container">
         <Controller
           name="employmentStatus"
-          rules={{ required: "Required" }}
+          rules={{ required: 'Required' }}
           control={control}
-          render={({
-            field: { onChange, value, onBlur },
-            fieldState: { invalid, error },
-          }) => (
+          render={({ field: { onChange, value, onBlur }, fieldState: { invalid, error } }) => (
             <div>
               <Select
                 onValueChange={(value) => {
                   onChange(value);
-                  trigger(["employerName", "jobTitle", "annualIncome"]);
+                  trigger(['employerName', 'jobTitle', 'annualIncome']);
                 }}
                 value={value}
                 onOpenChange={(value) => !value && onBlur()}
               >
-                <SelectTrigger
-                  name="employmentStatus"
-                  floatingLabel="Employment status"
-                >
+                <SelectTrigger name="employmentStatus" floatingLabel="Employment status">
                   <SelectValue placeholder="Select status" />
                 </SelectTrigger>
                 {invalid && (
-                  <span className="text-destructive block !mt-[5px] text-[12px]">
+                  <span className="text-destructive !mt-[5px] block text-[12px]">
                     {error?.message}
                   </span>
                 )}
@@ -70,14 +63,14 @@ const EmploymentInfo = () => {
           id="employerName"
           label="Employer name"
           type="text"
-          {...register("employerName", {
+          {...register('employerName', {
             validate: (employerName, formValues) => {
               if (
-                (formValues.employmentStatus === "employed" ||
-                  formValues.employmentStatus === "self-employed") &&
+                (formValues.employmentStatus === 'employed' ||
+                  formValues.employmentStatus === 'self-employed') &&
                 !employerName
               ) {
-                return "Required";
+                return 'Required';
               }
             },
           })}
@@ -87,14 +80,14 @@ const EmploymentInfo = () => {
           id="jobTitle"
           label="Job title"
           type="text"
-          {...register("jobTitle", {
+          {...register('jobTitle', {
             validate: (jobTitle, formValues) => {
               if (
-                (formValues.employmentStatus === "employed" ||
-                  formValues.employmentStatus === "self-employed") &&
+                (formValues.employmentStatus === 'employed' ||
+                  formValues.employmentStatus === 'self-employed') &&
                 !jobTitle
               ) {
-                return "Required";
+                return 'Required';
               }
             },
           })}
@@ -104,14 +97,14 @@ const EmploymentInfo = () => {
           id="annualIncome"
           label="Annual income"
           type="number"
-          {...register("annualIncome", {
+          {...register('annualIncome', {
             validate: (annualIncome, formValues) => {
               if (
-                (formValues.employmentStatus === "employed" ||
-                  formValues.employmentStatus === "self-employed") &&
+                (formValues.employmentStatus === 'employed' ||
+                  formValues.employmentStatus === 'self-employed') &&
                 !annualIncome
               ) {
-                return "Required";
+                return 'Required';
               }
             },
             valueAsNumber: true,

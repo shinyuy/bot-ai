@@ -18,11 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
 
@@ -30,7 +26,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 
 @layer base {
   :root {
@@ -68,7 +63,7 @@ body {
 
 @layer components {
   .stepper_step_container {
-    @apply grid grid-cols-2 gap-[30px] my-[30px];
+    @apply my-[30px] grid grid-cols-2 gap-[30px];
   }
   .stepper_step_heading {
     /* @apply text-center text-foreground/70 mt-[30px]; */
@@ -76,6 +71,6 @@ body {
 }
 
 /* Remove input background on chrome autocomplete */
-input:-webkit-autofill { 
+input:-webkit-autofill {
   -webkit-background-clip: text;
 }

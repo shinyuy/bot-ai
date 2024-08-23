@@ -13,7 +13,6 @@ import { SideNavItem } from '../../types';
 import { Icon } from '@iconify/react';
 
 const SideNav = () => {
-
   const dispatch = useAppDispatch();
 
   const [logout] = useLogoutMutation();
@@ -27,26 +26,28 @@ const SideNav = () => {
   };
 
   return (
-    <div className="md:w-60 bg-white h-screen flex flex-col justify-between pb-6 flex-1 fixed border-r border-zinc-200 hidden md:flex">
-      <div className="flex flex-col space-y-6 w-full">
+    <div className="fixed flex hidden h-screen flex-1 flex-col justify-between border-r border-zinc-200 bg-white pb-6 md:flex md:w-60">
+      <div className="flex w-full flex-col space-y-6">
         <Link
           href="/"
-          className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
+          className="flex h-12 w-full flex-row items-center justify-center space-x-3 border-b border-zinc-200 md:justify-start md:px-6"
         >
-          <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
-          <span className="font-bold text-xl hidden text-black md:flex">Bot AI</span>
+          <span className="h-7 w-7 rounded-lg bg-zinc-300" />
+          <span className="hidden text-xl font-bold text-black md:flex">Bot AI</span>
         </Link>
 
-        <div className="flex flex-col space-y-2  md:px-6 ">
+        <div className="flex flex-col space-y-2 md:px-6">
           {SIDENAV_ITEMS.map((item, idx) => {
             return <MenuItem key={idx} item={item} />;
           })}
         </div>
       </div>
-      <span className='flex justify-center' onClick={handleLogout}>
-        <Icon icon="el:off" color='red' width="24" height="24" />
+      <span className="flex justify-center" onClick={handleLogout}>
+        <Icon icon="el:off" color="red" width="24" height="24" />
 
-        <span className='cursor-pointer text-red-800 px-8  font-bold' onClick={handleLogout}>Logout</span>
+        <span className="cursor-pointer px-8 font-bold text-red-800" onClick={handleLogout}>
+          Logout
+        </span>
       </span>
     </div>
   );
@@ -67,12 +68,13 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         <>
           <button
             onClick={toggleSubMenu}
-            className={`flex flex-row items-center p-2 rounded-lg hover-bg-zinc-100 w-full justify-between hover:bg-zinc-100 ${pathname.includes(item.path) ? 'bg-zinc-100' : ''
-              }`}
+            className={`hover-bg-zinc-100 flex w-full flex-row items-center justify-between rounded-lg p-2 hover:bg-zinc-100 ${
+              pathname.includes(item.path) ? 'bg-zinc-100' : ''
+            }`}
           >
-            <div className="flex flex-row text-black space-x-4 items-center">
+            <div className="flex flex-row items-center space-x-4 text-black">
               {item.icon}
-              <span className=" text-black text-xl  flex">{item.title}</span>
+              <span className="flex text-xl text-black">{item.title}</span>
             </div>
 
             <div className={`${subMenuOpen ? 'rotate-180' : ''} flex text-black`}>
@@ -83,11 +85,12 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
       ) : (
         <Link
           href={item.path}
-          className={`flex text-black flex-row space-x-4 items-center p-2 rounded-lg ${item.path === pathname ? 'bg-zinc-100' : ''
-            }`}
+          className={`flex flex-row items-center space-x-4 rounded-lg p-2 text-black ${
+            item.path === pathname ? 'bg-zinc-100' : ''
+          }`}
         >
           {item.icon}
-          <span className=" text-xl flex">{item.title}</span>
+          <span className="flex text-xl">{item.title}</span>
         </Link>
       )}
     </div>

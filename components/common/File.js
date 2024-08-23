@@ -1,22 +1,22 @@
 // import AddIcon from "@mui/icons-material/Add";
 // import CancelIcon from "@mui/icons-material/Cancel";
 // import CircularProgress from "@mui/material/CircularProgress";
-import React, { Component, useEffect, useState } from "react";
-import Dropzone from "react-dropzone";
+import React, { Component, useEffect, useState } from 'react';
+import Dropzone from 'react-dropzone';
 //import API from "../../pages/api/APIURL";
 // import { handleLogout } from "./Header";
-import axios from "axios";
-import Spinner from "./Spinner";
-import { useFileMutation } from "../../redux/features/fileApiSlice";
-import { toast } from "react-toastify";
-import pdfToText from "react-pdftotext";
-import { UploadIcon } from "@radix-ui/react-icons";
+import axios from 'axios';
+import Spinner from './Spinner';
+import { useFileMutation } from '../../redux/features/fileApiSlice';
+import { toast } from 'react-toastify';
+import pdfToText from 'react-pdftotext';
+import { UploadIcon } from '@radix-ui/react-icons';
 
 export default function File(props) {
   const [fileState, setFileState] = useState({
     uploadedFiles: props.files,
     uploading: false,
-    error: "",
+    error: '',
     width: null,
   });
   const [file, { isLoading }] = useFileMutation();
@@ -25,22 +25,22 @@ export default function File(props) {
     setFileState({ ...fileState, width: window.innerWidth });
   }, []);
 
-  const API = "";
+  const API = '';
 
-  const ext = (f) => f.split(".").pop();
+  const ext = (f) => f.split('.').pop();
 
   const onDrop = async (files) => {
     const pdf = files[0];
 
-    if (pdf && ext(pdf.name) === "pdf") {
+    if (pdf && ext(pdf.name) === 'pdf') {
       if (files[0].size > 5000000) {
-        setFileState({ error: "Image size must not exceed 500000 MB" });
+        setFileState({ error: 'Image size must not exceed 500000 MB' });
       } else {
-        setFileState({ error: "", uploading: true });
+        setFileState({ error: '', uploading: true });
 
         let formData = new FormData();
 
-        formData.append("file", files[0]);
+        formData.append('file', files[0]);
         const pdfText = await pdfToText(pdf);
 
         // axios
@@ -55,10 +55,10 @@ export default function File(props) {
           .unwrap()
           .then(() => {
             dispatch(setAuth());
-            toast.success("File upload");
+            toast.success('File upload');
           })
           .catch(() => {
-            toast.error("Failed to upload file");
+            toast.error('Failed to upload file');
           });
 
         // await API.editBusinessFrontImage(
@@ -113,10 +113,10 @@ export default function File(props) {
         //formData,
         {
           headers: {
-            "content-type": "multipart/form-data",
+            'content-type': 'multipart/form-data',
             //"x-access-token": 'token',
           },
-        }
+        },
       )
       .then((response) => {
         let images = this.state.uploadedFiles.filter((item) => {
@@ -129,7 +129,7 @@ export default function File(props) {
           },
           () => {
             this.props.imagesHandler(images);
-          }
+          },
         );
       })
       .catch((error) => {
@@ -152,7 +152,7 @@ export default function File(props) {
       return fileState.uploadedFiles.map((item) => (
         <div
           className="dropzone_box"
-          style={{ margin: "3px", width: isMobile ? "80vw" : "auto" }}
+          style={{ margin: '3px', width: isMobile ? '80vw' : 'auto' }}
           key={item.public_id}
           onClick={() => onRemove(item.public_id)}
         >
@@ -160,11 +160,11 @@ export default function File(props) {
             className="wrap"
             style={{
               background: `url(${item.url}) no-repeat`,
-              minWidth: "250px",
-              width: isMobile ? "80vw" : "auto",
-              height: "250px",
-              backgroundSize: "cover",
-              color: "white",
+              minWidth: '250px',
+              width: isMobile ? '80vw' : 'auto',
+              height: '250px',
+              backgroundSize: 'cover',
+              color: 'white',
             }}
           >
             <p>Cancel</p>
@@ -195,9 +195,9 @@ export default function File(props) {
       {fileState.error && (
         <p
           style={{
-            color: "red",
-            fontWeight: "bold",
-            textAlign: "center",
+            color: 'red',
+            fontWeight: 'bold',
+            textAlign: 'center',
           }}
         >
           {fileState.error}
@@ -205,14 +205,14 @@ export default function File(props) {
       )}
       <div
         style={{
-          display: "flex",
-          padding: "20px",
-          marginTop: "50px",
-          height: isMobile ? "600px" : "300px",
-          border: "2px dotted black",
-          width: isMobile ? "90vw" : "auto",
-          display: "flex",
-          justifyContent: "center",
+          display: 'flex',
+          padding: '20px',
+          marginTop: '50px',
+          height: isMobile ? '600px' : '300px',
+          border: '2px dotted black',
+          width: isMobile ? '90vw' : 'auto',
+          display: 'flex',
+          justifyContent: 'center',
           borderRadius: 10,
         }}
       >
@@ -220,15 +220,15 @@ export default function File(props) {
           <div
             className="dropzone clear"
             style={{
-              display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: 'center',
             }}
           >
             <div
               style={{
-                display: "flex",
-                justifyContent: "space-evenly",
+                display: 'flex',
+                justifyContent: 'space-evenly',
               }}
             >
               {showUploadedImages(isMobile)}
@@ -237,20 +237,20 @@ export default function File(props) {
               <div
                 className="dropzone_box"
                 style={{
-                  textAlign: "center",
-                  paddingTop: "10px",
+                  textAlign: 'center',
+                  paddingTop: '10px',
                 }}
               >
                 <div
                   style={{
-                    width: isMobile ? "80vw" : "auto",
-                    height: "250px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    width: isMobile ? '80vw' : 'auto',
+                    height: '250px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                   }}
                 >
-                  <div className="flex justify-center my-8">
+                  <div className="my-8 flex justify-center">
                     <Spinner lg />
                   </div>
                 </div>
@@ -262,22 +262,20 @@ export default function File(props) {
                 multiple={false}
                 className="dropzone_box"
                 style={{
-                  color: "black",
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  height: "250px",
-                  width: isMobile ? "80vw" : "auto",
-                  padding: "10px",
+                  color: 'black',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  height: '250px',
+                  width: isMobile ? '80vw' : 'auto',
+                  padding: '10px',
                 }}
               >
                 <UploadIcon width="40" height="40" />
                 Click to upload or drag and drop
                 <div className="">
-                  <p className="text-gray-500 text-xs">
-                    Maximum file size 500. MB
-                  </p>
+                  <p className="text-xs text-gray-500">Maximum file size 500. MB</p>
                 </div>
               </Dropzone>
             )}
