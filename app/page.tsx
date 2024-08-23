@@ -44,7 +44,7 @@ export default function Page() {
             />
           </div>
         </section>
-        <div className="mt-32 flex w-full justify-center">
+        <div className="flex w-full justify-center">
           <h2 className="text-32 mb-8 text-4xl font-bold">How It Works</h2>
         </div>
         <section className="w-full py-12">
