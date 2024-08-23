@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import Provider from '../redux/provider';
 import { Footer, Navbar } from '../components/common';
 import { Setup } from '../components/utils';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -32,10 +32,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <title>Bot AI</title>
       <body className={inter.className}>
         <Provider>
-          <Setup />
+          <Suspense>
+            <Setup />
 
-          <div className="">{children}</div>
-          <Footer />
+            <div className="">
+              {children}
+            </div>
+            <Footer />
+          </Suspense>
+
         </Provider>
         {/* {isClient &&
 					<script src="https://bot-client-2b4.pages.dev/ui.js"></script>} */}
