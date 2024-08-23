@@ -10,10 +10,8 @@ export default function Page() {
 	useSocialAuth(googleAuthenticate, 'google-oauth2');
 
 	return (
-		<Suspense>
-			<div className='my-8'>
-				<Spinner lg />
-			</div>
+		<Suspense fallback={<div className='my-8'><Spinner lg /></div>}>
+
 		</Suspense>
 
 	);
