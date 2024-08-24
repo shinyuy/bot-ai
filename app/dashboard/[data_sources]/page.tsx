@@ -64,10 +64,10 @@ export default function Page() {
         );
     }
 
-    const handleNext = async () => {
-        // const isStepValid = await trigger(undefined, { shouldFocus: true });
-        if (isStepValid) setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
+    // const handleNext = async () => {
+    //     // const isStepValid = await trigger(undefined, { shouldFocus: true });
+    //     if (isStepValid) setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    // };
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
