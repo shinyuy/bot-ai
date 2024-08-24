@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Page() {
-  const { data: companies, isLoading, isFetching } = useRetrieveCompaniesQuery();
+  const { data: companies, isLoading, isFetching } = useRetrieveCompaniesQuery('');
 
   useEffect(() => {
 
