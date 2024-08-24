@@ -1,11 +1,7 @@
 'use client';
 
-import { useRetrieveUserQuery } from '../../../redux/features/authApiSlice';
-import { List, Spinner } from '../../../components/common';
-import CompanyForm from '../../../components/forms/CompanyForm';
-import File from '../../../components/common/File';
+import { Spinner } from '../../../components/common';
 import { useState, useEffect } from 'react';
-import HookMultiStepForm from '../../../components/forms/multi-step-form';
 import { useAddCompany } from '../../../hooks';
 import StepperIndicator from '../../../components/forms/multi-step-form/stepper-indicator';
 import CompanyInfo from '../../../components/forms/multi-step-form/company-info';
@@ -72,41 +68,8 @@ export default function Page() {
                 <h1 className="mb-[50px] text-center text-[24px] font-bold">Create a Chatbot</h1>
                 <div>
                     <StepperIndicator activeStep={activeStep} />
-                    {/* {errors.root?.formError && (
-            <Alert variant="destructive" className="mt-[28px]">
-              <ExclamationTriangleIcon className="h-4 w-4" />
-              <AlertTitle>Form Error</AlertTitle>
-              <AlertDescription>{errors.root?.formError?.message}</AlertDescription>
-            </Alert>
-          )} */}
                     <>
                         {getStepContent(activeStep, setActiveStep)}
-                        {/* <div className="flex w-3/4 justify-between space-x-[20px]">
-              <Button
-                type="button"
-                className="w-[100px] bg-black text-white"
-                variant="secondary"
-                onClick={handleBack}
-                disabled={activeStep === 1}
-              >
-                Back
-              </Button>
-              {activeStep === 3 || activeStep === 1 ? (
-                <Button
-                  className="w-[100px]"
-                  // type="button"
-                  type="submit"
-                  // onClick={handleSubmit(submitForm)}
-                  disabled={isSubmitting}
-                >
-                  Submit
-                </Button>
-              ) : (
-                <Button type="button" className="w-[100px]" onClick={handleNext}>
-                  Next
-                </Button>
-              )}
-            </div> */}
                     </>
                 </div>
             </div>
