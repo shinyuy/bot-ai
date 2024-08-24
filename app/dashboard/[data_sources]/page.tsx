@@ -36,18 +36,7 @@ export default function Page() {
     const { name, website, isLoading, onChange, onSubmit } = useAddCompany();
     const [activeStep, setActiveStep] = useState(3);
     const [erroredInputName, setErroredInputName] = useState('');
-    // const methods = useForm<StepperFormValues>({
-    //   mode: 'onTouched',
-    // });
 
-    // const {
-    //   trigger,
-    //   handleSubmit,
-    //   setError,
-    //   formState: { isSubmitting, errors },
-    // } = methods;
-
-    // focus errored input on submit
     useEffect(() => {
         const erroredInputElement = document.getElementsByName(erroredInputName)?.[0];
         if (erroredInputElement instanceof HTMLInputElement) {
