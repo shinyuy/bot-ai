@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent } from 'react';
 import { Input } from '../forms';
 import { Spinner } from '../common';
+import data from '../../utils/countries.json';
 
 interface Config {
   labelText: string;
@@ -23,21 +24,43 @@ interface Props {
 }
 
 export default function Form({ config, isLoading, btnText, onChange, onSubmit }: Props) {
+
+  const handleChange = (e) => {
+    onChange(e)
+  }
   return (
     <form className="space-y-6" onSubmit={onSubmit}>
-      {config.map((input) => (
-        <Input
-          key={input.labelId}
-          labelId={input.labelId}
-          type={input.type}
-          onChange={onChange}
-          value={input.value}
-          link={input.link}
-          required={input.required}
-        >
-          {input.labelText}
-        </Input>
-      ))}
+      {config.map((input) => {
+        if (input.labelId === 'country') {
+          return (
+            <div>
+              <label className='' htmlFor="country">Country where your business is based</label>
+
+              <select onChange={e => handleChange(e)} value={input.value} className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="country" id="country">
+                <option value="">Select country</option>
+                {data.countries.map((country, i) =>
+                  <option key={i} value={country.name}>{country.name}</option>
+                )}
+              </select> </div>
+          )
+        } else {
+          return (
+            <Input
+              key={input.labelId}
+              labelId={input.labelId}
+              type={input.type}
+              onChange={onChange}
+              value={input.value}
+              link={input.link}
+              required={input.required}
+            >
+              {input.labelText}
+            </Input>
+          )
+        }
+
+      })}
 
       <div>
         <button

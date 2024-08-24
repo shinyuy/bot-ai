@@ -3,6 +3,7 @@
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useAddCompany } from '../../../hooks';
 
 // import { STEPPER_FORM_KEYS } from "@/lib/constants/hook-stepper-constants";
 import { StepperFormKeysType, StepperFormValues } from '../../types/hook-stepper';
@@ -14,9 +15,7 @@ import { toast } from './ui/use-toast';
 import FileUpload from './file';
 import DataSource from './data-source';
 import CompanyInfo from './company-info';
-import EmploymentInfo from './employment-info';
-import FinancialInfo from './financial-info';
-import LoanDetails from './loan-details';
+import Success from './success';
 
 const STEPPER_FORM_KEYS = {
   1: ['name', 'website', 'country', 'phone'],
@@ -26,7 +25,7 @@ const STEPPER_FORM_KEYS = {
   5: ['bankName', 'accountNumber', 'routingNumber', 'creditScore'],
 } as const;
 
-function getStepContent(step: number) {
+function getStepContent(step: number, setActiveStep) {
   switch (step) {
     case 1:
       return <CompanyInfo />;
@@ -35,15 +34,15 @@ function getStepContent(step: number) {
     case 3:
       return <FileUpload />;
     case 4:
-      return <LoanDetails />;
+      return <Success />;
     case 5:
-      return <FinancialInfo />;
     default:
       return 'Unknown step';
   }
 }
 
 const HookMultiStepForm = () => {
+  const { name, website, isLoading, onChange, onSubmit } = useAddCompany();
   const [activeStep, setActiveStep] = useState(1);
   const [erroredInputName, setErroredInputName] = useState('');
   const methods = useForm<StepperFormValues>({
@@ -66,54 +65,55 @@ const HookMultiStepForm = () => {
     }
   }, [erroredInputName]);
 
-  const onSubmit = async (formData: StepperFormValues) => {
+  const submitForm = async (formData: StepperFormValues) => {
     console.log({ formData });
+    onSubmit
     // simulate api call
-    await new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // resolve({
-        //   title: "Success",
-        //   description: "Form submitted successfully",
-        // });
-        reject({
-          message: 'There was an error submitting form',
-          // message: "Field error",
-          // errorKey: "fullName",
-        });
-      }, 2000);
-    })
-      .then(({ title, description }) => {
-        toast({
-          title,
-          description,
-        });
-      })
-      .catch(({ message: errorMessage, errorKey }) => {
-        if (
-          errorKey &&
-          Object.values(STEPPER_FORM_KEYS)
-            .flatMap((fieldNames) => fieldNames)
-            .includes(errorKey)
-        ) {
-          let erroredStep: number;
-          // get the step number based on input name
-          for (const [key, value] of Object.entries(STEPPER_FORM_KEYS)) {
-            if (value.includes(errorKey as never)) {
-              erroredStep = Number(key);
-            }
-          }
-          // set active step and error
-          setActiveStep(erroredStep);
-          setError(errorKey as StepperFormKeysType, {
-            message: errorMessage,
-          });
-          setErroredInputName(errorKey);
-        } else {
-          setError('root.formError', {
-            message: errorMessage,
-          });
-        }
-      });
+    // await new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     // resolve({
+    //     //   title: "Success",
+    //     //   description: "Form submitted successfully",
+    //     // });
+    //     reject({
+    //       message: 'There was an error submitting form',
+    //       // message: "Field error",
+    //       // errorKey: "fullName",
+    //     });
+    //   }, 2000);
+    // })
+    //   .then(({ title, description }) => {
+    //     toast({
+    //       title,
+    //       description,
+    //     });
+    //   })
+    //   .catch(({ message: errorMessage, errorKey }) => {
+    //     if (
+    //       errorKey &&
+    //       Object.values(STEPPER_FORM_KEYS)
+    //         .flatMap((fieldNames) => fieldNames)
+    //         .includes(errorKey)
+    //     ) {
+    //       let erroredStep: number;
+    //       // get the step number based on input name
+    //       for (const [key, value] of Object.entries(STEPPER_FORM_KEYS)) {
+    //         if (value.includes(errorKey as never)) {
+    //           erroredStep = Number(key);
+    //         }
+    //       }
+    //       // set active step and error
+    //       setActiveStep(erroredStep);
+    //       setError(errorKey as StepperFormKeysType, {
+    //         message: errorMessage,
+    //       });
+    //       setErroredInputName(errorKey);
+    //     } else {
+    //       setError('root.formError', {
+    //         message: errorMessage,
+    //       });
+    //     }
+    //   });
   };
 
   const handleNext = async () => {
@@ -135,36 +135,35 @@ const HookMultiStepForm = () => {
           <AlertDescription>{errors.root?.formError?.message}</AlertDescription>
         </Alert>
       )}
-      <FormProvider {...methods}>
-        <form noValidate className="flex w-full flex-col items-center">
-          {getStepContent(activeStep)}
-          <div className="flex w-3/4 justify-between space-x-[20px]">
+      <>
+        {getStepContent(activeStep, setActiveStep)}
+        <div className="flex w-3/4 justify-between space-x-[20px]">
+          <Button
+            type="button"
+            className="w-[100px] bg-black text-white"
+            variant="secondary"
+            onClick={handleBack}
+            disabled={activeStep === 1}
+          >
+            Back
+          </Button>
+          {activeStep === 3 || activeStep === 1 ? (
             <Button
-              type="button"
-              className="w-[100px] bg-black text-white"
-              variant="secondary"
-              onClick={handleBack}
-              disabled={activeStep === 1}
+              className="w-[100px]"
+              // type="button"
+              type="submit"
+              // onClick={handleSubmit(submitForm)}
+              disabled={isSubmitting}
             >
-              Back
+              Submit
             </Button>
-            {activeStep === 5 ? (
-              <Button
-                className="w-[100px]"
-                type="button"
-                onClick={handleSubmit(onSubmit)}
-                disabled={isSubmitting}
-              >
-                Submit
-              </Button>
-            ) : (
-              <Button type="button" className="w-[100px]" onClick={handleNext}>
-                Next
-              </Button>
-            )}
-          </div>
-        </form>
-      </FormProvider>
+          ) : (
+            <Button type="button" className="w-[100px]" onClick={handleNext}>
+              Next
+            </Button>
+          )}
+        </div>
+      </>
     </div>
   );
 };

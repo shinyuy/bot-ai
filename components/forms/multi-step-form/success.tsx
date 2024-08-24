@@ -1,18 +1,7 @@
-import { Controller, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 import { StepperFormValues } from '../../types/hook-stepper';
 
-import { DatePickerSingle } from './ui/date-picker-single';
-import { FloatingLabelInput } from './ui/floating-input';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from './ui/select';
 
 const Success = () => {
   const {

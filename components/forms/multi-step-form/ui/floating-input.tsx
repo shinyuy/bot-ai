@@ -4,7 +4,7 @@ import { cn } from '../../../../utils';
 import { Input } from './input';
 import { Label } from './label';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> { }
 
 const FloatingInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => {
@@ -42,7 +42,7 @@ const FloatingLabelInput = React.forwardRef<
         <FloatingInput ref={ref} id={id} {...props} />
         <FloatingLabel htmlFor={id}>{label}</FloatingLabel>
       </div>
-      {error && <span className="text-destructive !mt-[5px] block text-[12px]">{error}</span>}
+      {error && <span className="text-destructive text-red-900 !mt-[5px] block text-[12px]">{error}</span>}
     </div>
   );
 });

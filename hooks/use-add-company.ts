@@ -10,24 +10,26 @@ export default function useAddCompany() {
   const [formData, setFormData] = useState({
     name: '',
     website: '',
+    phone: '',
+    country: ''
   });
 
-  const { name, website } = formData;
+  const { name, website, phone, country } = formData;
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    
     const { name, value } = event.target;
-
     setFormData({ ...formData, [name]: value });
   };
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    addCompany({ name, website })
+    addCompany({ name, website, phone, country })
       .unwrap()
       .then(() => {
         toast.success('Company added!');
-        // router.push('/auth/login');
+        router.push('/dashboard/data_sources');
       })
       .catch(() => {
         toast.error('Failed to add company');
@@ -37,6 +39,8 @@ export default function useAddCompany() {
   return {
     name,
     website,
+    phone,
+    country,
     isLoading,
     onChange,
     onSubmit,

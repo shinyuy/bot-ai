@@ -11,8 +11,12 @@ import { useFileMutation } from '../../redux/features/fileApiSlice';
 import { toast } from 'react-toastify';
 import pdfToText from 'react-pdftotext';
 import { UploadIcon } from '@radix-ui/react-icons';
+import { useSearchParams } from 'next/navigation';
 
 export default function File(props) {
+  const searchParams = useSearchParams();
+  let website = searchParams.get('website');
+  let id = searchParams.get('company_id');
   const [fileState, setFileState] = useState({
     uploadedFiles: props.files,
     uploading: false,
@@ -51,7 +55,7 @@ export default function File(props) {
         //     },
         //   })
 
-        await file({ pdfText, name: pdf.name })
+        await file({ pdfText, name: pdf.name, website, id })
           .unwrap()
           .then(() => {
             dispatch(setAuth());

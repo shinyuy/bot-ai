@@ -13,6 +13,11 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     path: '/dashboard/company',
     icon: <Icon icon="lucide:folder" width="24" height="24" />,
   },
+  // {
+  //   title: 'Data Sources',
+  //   path: '/dashboard/data_sources',
+  //   icon: <Icon icon="lucide:folder" width="24" height="24" />,
+  // },
   {
     title: 'Settings',
     path: '/dashboard/settings',

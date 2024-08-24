@@ -1,22 +1,9 @@
-import { Controller, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
-import { validateEmail } from '../../../utils';
 import { StepperFormValues } from '../../types/hook-stepper';
 
-import { DatePickerSingle } from './ui/date-picker-single';
-import { FloatingLabelInput } from './ui/floating-input';
-import data from '../../../utils/countries.json';
 import CheckBox from './ui/checkbox';
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from './ui/select';
 
 const DataSource = () => {
   const {
@@ -34,7 +21,7 @@ const DataSource = () => {
       </p>
       <div className="stepper_step_container w-3/4">
         <CheckBox label="File/PDF " value="" />
-        <CheckBox label="website" value="" />
+        <CheckBox label="Website" value="" />
         <CheckBox label="Database" value="" />
       </div>
     </div>

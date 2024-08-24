@@ -10,7 +10,7 @@ interface StepperIndicatorProps {
 const StepperIndicator = ({ activeStep }: StepperIndicatorProps) => {
   return (
     <div className="flex items-center justify-center">
-      {[1, 2, 3, 4, 5].map((step) => (
+      {[1, 2, 3, 4].map((step) => (
         <Fragment key={step}>
           <div
             className={clsx(
@@ -21,7 +21,7 @@ const StepperIndicator = ({ activeStep }: StepperIndicatorProps) => {
           >
             {step >= activeStep ? step : <Check className="h-5 w-5" />}
           </div>
-          {step !== 5 && (
+          {step !== 4 && (
             <Separator
               orientation="horizontal"
               className={clsx('h-[2px] w-[100px]', step <= activeStep - 1 && 'bg-primary')}

@@ -11,13 +11,15 @@ const companyApiSlice = apiSlice.injectEndpoints({
       query: () => '/company',
     }),
     company: builder.mutation({
-      query: ({ name, website }) => ({
+      query: ({ name, website, phone, country }) => {
+        console.log(name, website, phone, country)
+        return ({
         url: '/company',
         method: 'POST',
-        body: { name, website },
-      }),
+        body: { name, website, phone, country },
+      })},
     }),
-    companies: builder.mutation({
+    retrieveCompanies: builder.query({
       query: () => ({
         url: '/company',
         method: 'GET',
@@ -26,4 +28,4 @@ const companyApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useCompanyMutation, useCompaniesMutation } = companyApiSlice;
+export const { useCompanyMutation, useRetrieveCompaniesQuery } = companyApiSlice;
