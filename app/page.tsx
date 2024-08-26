@@ -44,12 +44,12 @@ export default function Page() {
             />
           </div>
         </section>
-        <div className="flex w-full justify-center">
-          <h2 className="text-32 mb-8 text-4xl font-bold">How It Works</h2>
+        <div className="flex w-full mt-36 md:mt-0 justify-center">
+          <h2 className="text-32 mb-8 md:mb-8 text-4xl font-bold">How It Works</h2>
         </div>
-        <section className="w-full py-12">
-          <div className="w-wull flex flex-col md:flex-row md:h-screen justify-center px-2 md:px-32 mb-24">
-            <div className="flex w-full md:w-1/2 pb-24 md:pb-0 items-start justify-end">
+        <section className="w-full py-2">
+          <div className="w-wull flex flex-col md:flex-row md:h-screen justify-center px-2 md:px-32 mb-48 md:mb-0">
+            <div className="flex w-full md:w-1/2 pb-12 md:pb-0 items-start justify-end">
               <Image
                 src={'/dashboard.png'}
                 alt="Chatbot"
@@ -66,7 +66,7 @@ export default function Page() {
               </span>
             </div>
           </div>
-          <div className="w-wull mb-24 md:mb-0 flex flex-col-reverse md:flex-row items-center justify-center px-2 md:px-32">
+          <div className="w-wull mb-24 md:mb-0 flex flex-col-reverse md:flex-row items-center justify-center px-2 md:px-32 mb-48 md:mb-0">
             <div className="flex h-full w-full md:w-1/2 items-center justify-center">
               <span className="text-3xl text-black">
                 <b>Train Your Bot</b>: Our AI models learn from your data to provide accurate and
@@ -84,7 +84,7 @@ export default function Page() {
               />
             </div>
           </div>
-          <div className="w-wull flex flex-col mb-24 md:mb-0 md:flex-row items-center justify-center px-2 md:px-32">
+          <div className="w-wull flex flex-col mb-24 md:mb-0 md:flex-row items-center justify-center px-2 md:px-32 mb-48 md:mb-0">
             <div className="flex flex-col w-full md:w-1/2 items-center">
               <Image
                 src={'/chatui.png'}
@@ -102,7 +102,7 @@ export default function Page() {
               </span>
             </div>
           </div>
-          <div className="w-wull flex flex-col-reverse md:flex-row items-center justify-center px-2 md:px-32">
+          <div className="w-wull flex flex-col-reverse md:flex-row items-center justify-center px-2 md:px-32 mb-48 md:mb-0">
             <div className="flex h-full w-full md:w-1/2 items-center justify-center">
               <span className="text-3xl text-black">
                 <b>Monitor & Optimize</b>: Use our analytics dashboard to track performance and
@@ -122,11 +122,11 @@ export default function Page() {
           </div>
         </section>
         <div className="mb-16 flex w-full justify-center">
-          <h2 className="text-4xl font-bold text-black text-center mb-8 md:mb-0">Why Choose Our AI-Powered Chatbots?</h2>
+          <h2 className="text-4xl font-bold text-black text-center mb-4 md:mb-0">Why Choose Our AI-Powered Chatbots?</h2>
         </div>
-        <section className="m-0 flex h-96 md:h-screen w-full flex-col md:flex-row justify-center py-0 text-white">
+        <section className="m-0 flex  md:h-screen w-full flex-col md:flex-row justify-center py-0 text-white">
           <div className="flex w-full flex-col items-end bg-black py-12">
-            <div className="flex h-full w-full items-center justify-center p-2 md:p-16">
+            <div className="flex h-full w-full items-center justify-center p-8 md:p-16">
               <span className="text-3xl text-center">
                 <b>Customizable AI Chatbots</b>: Tailored to your business needs, leveraging your
                 unique data sources.
@@ -134,7 +134,7 @@ export default function Page() {
             </div>
           </div>
           <div className="w-full py-12">
-            <div className="flex h-full w-full items-center justify-center p-2 md:p-16">
+            <div className="flex h-full w-full items-center justify-center p-8 md:p-16">
               <span className="text-3xl text-black text-center">
                 <b>Seamless Integration</b>: Works across websites, apps, and social media channels.
               </span>
@@ -143,16 +143,16 @@ export default function Page() {
         </section>
         <section className="mb-0 flex py-8 md:py-0 md:h-screen w-full flex-col-reverse md:flex-row justify-center py-0 text-white">
           <div className="w-full py-12">
-            <div className="flex h-full w-full items-center justify-center p-2 md:p-16">
-              <span className="text-3xl text-black">
+            <div className="flex h-full w-full items-center justify-center p-8 md:p-16">
+              <span className="text-3xl text-black text-center">
                 <b>Scalable Solutions</b>: Suitable for businesses of all sizes, from startups to
                 enterprises.
               </span>
             </div>
           </div>
           <div className="flex w-full flex-col items-end bg-black py-12">
-            <div className="flex h-full w-full items-center justify-center p-2 md:p-16">
-              <span className="text-3xl">
+            <div className="flex h-full w-full items-center justify-center p-8 md:p-16">
+              <span className="text-3xl text-center">
                 <b>Multilingual Support</b>: Communicate with customers in their preferred language.
               </span>
             </div>
