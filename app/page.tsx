@@ -127,7 +127,7 @@ export default function Page() {
         <section className="m-0 flex  md:h-screen w-full flex-col md:flex-row justify-center py-0 text-white">
           <div className="flex w-full flex-col items-end bg-black py-12">
             <div className="flex h-full w-full items-center justify-center p-8 md:p-16">
-              <span className="text-3xl text-center">
+              <span className="text-xl md:3xl text-center">
                 <b>Customizable AI Chatbots</b>: Tailored to your business needs, leveraging your
                 unique data sources.
               </span>
@@ -135,7 +135,7 @@ export default function Page() {
           </div>
           <div className="w-full py-12">
             <div className="flex h-full w-full items-center justify-center p-8 md:p-16">
-              <span className="text-3xl text-black text-center">
+              <span className="text-xl md:3xl text-black text-center">
                 <b>Seamless Integration</b>: Works across websites, apps, and social media channels.
               </span>
             </div>
@@ -144,7 +144,7 @@ export default function Page() {
         <section className="mb-0 flex py-8 md:py-0 md:h-screen w-full flex-col-reverse md:flex-row justify-center py-0 text-white">
           <div className="w-full py-12">
             <div className="flex h-full w-full items-center justify-center p-8 md:p-16">
-              <span className="text-3xl text-black text-center">
+              <span className="text-xl md:3xl text-black text-center">
                 <b>Scalable Solutions</b>: Suitable for businesses of all sizes, from startups to
                 enterprises.
               </span>
@@ -152,7 +152,7 @@ export default function Page() {
           </div>
           <div className="flex w-full flex-col items-end bg-black py-12">
             <div className="flex h-full w-full items-center justify-center p-8 md:p-16">
-              <span className="text-3xl text-center">
+              <span className="text-xl md:3xl text-center">
                 <b>Multilingual Support</b>: Communicate with customers in their preferred language.
               </span>
             </div>
