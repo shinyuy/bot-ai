@@ -12,7 +12,7 @@ import pdfToText from 'react-pdftotext';
 import { toast } from 'react-toastify';
 // import { useAppDispatch } from '@/redux/hooks';
 
-const FileUpload = ({ setActiveStep }) => {
+const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
   // const dispatch = useAppDispatch();
   const { data: companies, isLoading, isFetching } = useRetrieveCompaniesQuery('');
   const [file, { /*isLoading*/ }] = useFileMutation();
@@ -44,7 +44,7 @@ const FileUpload = ({ setActiveStep }) => {
 
     if (pdf && ext(pdf.name) === 'pdf') {
       if (files[0].size > 5000000) {
-        setFileState({ error: 'Image size must not exceed 500000 MB' });
+        setFileState({ ...fileState, error: 'Image size must not exceed 500000 MB' });
       } else {
         let formData = new FormData();
 
