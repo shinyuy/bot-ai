@@ -19,7 +19,7 @@ const authApiSlice = apiSlice.injectEndpoints({
             //"content-Type": 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
-        };
+        }; 
       },
     }),
   }),

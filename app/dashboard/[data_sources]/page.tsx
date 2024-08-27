@@ -16,7 +16,7 @@ function getStepContent(step: number, setActiveStep) {
         case 2:
             return <DataSource />;
         case 3:
-            return <FileUpload />;
+            return <FileUpload step={step} setActiveStep={setActiveStep} />;
         case 4:
             return <Success />;
         case 5:

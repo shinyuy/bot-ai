@@ -4,11 +4,11 @@ import { StepperFormValues } from '../../types/hook-stepper';
 
 
 const Success = () => {
-  const {
-    control,
-    formState: { errors },
-    register,
-  } = useFormContext<StepperFormValues>();
+  // const {
+  //   control,
+  //   formState: { errors },
+  //   register,
+  // } = useFormContext<StepperFormValues>();
 
   return (
     <div className="flex min-h-80 w-full flex-col items-center">

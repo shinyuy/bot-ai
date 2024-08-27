@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <section>
       <div>
-        <button className="rounded bg-black px-4 py-2 text-white">Create a Chatbot</button>
+        <button className="rounded bg-black px-4 py-2 text-white"><Link href={"/dashboard/company"}>Create a Chatbot</Link></button>
         <h2 className="text-black mt-8">Your Companies</h2>
         <div className=''>
           <table className="w-1/2 divide-y divide-gray-200 dark:divide-neutral-700">

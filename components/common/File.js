@@ -1,113 +1,94 @@
-// import AddIcon from "@mui/icons-material/Add";
-// import CancelIcon from "@mui/icons-material/Cancel";
-// import CircularProgress from "@mui/material/CircularProgress";
 import React, { Component, useEffect, useState } from 'react';
 import Dropzone from 'react-dropzone';
-//import API from "../../pages/api/APIURL";
-// import { handleLogout } from "./Header";
 import axios from 'axios';
 import Spinner from './Spinner';
-import { useFileMutation } from '../../redux/features/fileApiSlice';
 import { toast } from 'react-toastify';
-import pdfToText from 'react-pdftotext';
 import { UploadIcon } from '@radix-ui/react-icons';
-import { useSearchParams } from 'next/navigation';
 
 export default function File(props) {
-  const searchParams = useSearchParams();
-  let website = searchParams.get('website');
-  let id = searchParams.get('company_id');
-  const [fileState, setFileState] = useState({
-    uploadedFiles: props.files,
-    uploading: false,
-    error: '',
-    width: null,
-  });
-  const [file, { isLoading }] = useFileMutation();
-
   useEffect(() => {
-    setFileState({ ...fileState, width: window.innerWidth });
+    props.setFileState({ ...props.fileState, width: window.innerWidth });
   }, []);
 
   const API = '';
 
   const ext = (f) => f.split('.').pop();
 
-  const onDrop = async (files) => {
-    const pdf = files[0];
+  // const onDrop = async (files) => {
+  //   const pdf = files[0];
 
-    if (pdf && ext(pdf.name) === 'pdf') {
-      if (files[0].size > 5000000) {
-        setFileState({ error: 'Image size must not exceed 500000 MB' });
-      } else {
-        setFileState({ error: '', uploading: true });
+  //   if (pdf && ext(pdf.name) === 'pdf') {
+  //     if (files[0].size > 5000000) {
+  //       setFileState({ error: 'Image size must not exceed 500000 MB' });
+  //     } else {
+  //       setFileState({ error: '', uploading: true });
 
-        let formData = new FormData();
+  //       let formData = new FormData();
 
-        formData.append('file', files[0]);
-        const pdfText = await pdfToText(pdf);
+  //       formData.append('file', files[0]);
+  //       const pdfText = await pdfToText(pdf);
 
-        // axios
-        //   .post(`http://localhost:8000/api/file/upload`, formData, {
-        //     headers: {
-        //       "content-type": "multipart/form-data",
-        //       //"x-access-token": "token",
-        //     },
-        //   })
+  //       // axios
+  //       //   .post(`http://localhost:8000/api/file/upload`, formData, {
+  //       //     headers: {
+  //       //       "content-type": "multipart/form-data",
+  //       //       //"x-access-token": "token",
+  //       //     },
+  //       //   })
 
-        await file({ pdfText, name: pdf.name, website, id })
-          .unwrap()
-          .then(() => {
-            dispatch(setAuth());
-            toast.success('File upload');
-          })
-          .catch(() => {
-            toast.error('Failed to upload file');
-          });
+  //       await file({ pdfText, name: pdf.name, website, id })
+  //         .unwrap()
+  //         .then(() => {
+  //           dispatch(setAuth());
+  //           toast.success('File upload');
+  //         })
+  //         .catch(() => {
+  //           toast.error('Failed to upload file');
+  //         });
 
-        // await API.editBusinessFrontImage(
-        //   [response.data],
-        //   this.props.business.businessType,
-        //   businessId,
-        //   token
-        // )
-        //   .then(({ data }) => {
-        //     let resImage = JSON.parse(data.images);
-        //     localStorage.setItem(
-        //       "business",
-        //       JSON.stringify({ ...this.props.business, images: resImage })
-        //     );
-        //     this.setState(
-        //       {
-        //         uploading: false,
-        //         uploadedFiles:
-        //           //...this.state.uploadedFiles,
-        //           resImage,
-        //       },
-        //       () => {
-        //         this.props.imagesHandler(this.state.uploadedFiles);
-        //       }
-        //     );
-        //   })
-        //   .catch((error) => {
-        //     if (error.response) {
-        //       console.log(error.response.data);
-        //       console.log(error.response.status);
-        //       console.log(error.response.headers);
-        //     }
-        //     if (error.response?.status === 401) {
-        //       handleLogout();
-        //     } else {
-        //       this.setState({
-        //         ...this.state,
-        //         error: error.response.data.message,
-        //       });
-        //       console.error(error.response.data.message);
-        //     }
-        //   });
-      }
-    }
-  };
+  //       // await API.editBusinessFrontImage(
+  //       //   [response.data],
+  //       //   this.props.business.businessType,
+  //       //   businessId,
+  //       //   token
+  //       // )
+  //       //   .then(({ data }) => {
+  //       //     let resImage = JSON.parse(data.images);
+  //       //     localStorage.setItem(
+  //       //       "business",
+  //       //       JSON.stringify({ ...this.props.business, images: resImage })
+  //       //     );
+  //       //     this.setState(
+  //       //       {
+  //       //         uploading: false,
+  //       //         uploadedFiles:
+  //       //           //...this.state.uploadedFiles,
+  //       //           resImage,
+  //       //       },
+  //       //       () => {
+  //       //         this.props.imagesHandler(this.state.uploadedFiles);
+  //       //       }
+  //       //     );
+  //       //   })
+  //       //   .catch((error) => {
+  //       //     if (error.response) {
+  //       //       console.log(error.response.data);
+  //       //       console.log(error.response.status);
+  //       //       console.log(error.response.headers);
+  //       //     }
+  //       //     if (error.response?.status === 401) {
+  //       //       handleLogout();
+  //       //     } else {
+  //       //       this.setState({
+  //       //         ...this.state,
+  //       //         error: error.response.data.message,
+  //       //       });
+  //       //       console.error(error.response.data.message);
+  //       //     }
+  //       //   });
+  //     }
+  //   }
+  // };
 
   const onRemove = (id) => {
     axios
@@ -152,8 +133,8 @@ export default function File(props) {
   };
 
   const showUploadedImages = (isMobile) => {
-    if (!fileState.uploading) {
-      return fileState.uploadedFiles.map((item) => (
+    if (!props.fileState.uploading) {
+      return props.fileState.uploadedFiles.map((item) => (
         <div
           className="dropzone_box"
           style={{ margin: '3px', width: isMobile ? '80vw' : 'auto' }}
@@ -178,12 +159,6 @@ export default function File(props) {
     }
   };
 
-  const extractText = async (f) => {
-    content = await pdfToText(f);
-
-    return content;
-  };
-
   const /*static*/ getDerivedStateFromProps = (props, fileState) => {
       if (props.reset) {
         return (fileState = {
@@ -193,10 +168,10 @@ export default function File(props) {
       return null;
     };
 
-  const isMobile = fileState.width <= 768;
+  const isMobile = props.fileState.width <= 768;
   return (
     <>
-      {fileState.error && (
+      {/* {props.fileState.error && (
         <p
           style={{
             color: 'red',
@@ -204,9 +179,9 @@ export default function File(props) {
             textAlign: 'center',
           }}
         >
-          {fileState.error}
+          {props.fileState.error}
         </p>
-      )}
+      )} */}
       <div
         style={{
           display: 'flex',
@@ -229,15 +204,25 @@ export default function File(props) {
               alignItems: 'center',
             }}
           >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-evenly',
-              }}
-            >
-              {showUploadedImages(isMobile)}
-            </div>
-            {fileState.uploading ? (
+            {props.fileState.name && (
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                {/* {showUploadedImages(isMobile)} */}
+                <p className="text-3xl">{props.fileState.name}</p>{' '}
+                <p
+                  onClick={() => props.setFileState({ ...props.fileState, name: '' })}
+                  className="cursor-pointer pl-16 text-xs font-bold text-red-900"
+                >
+                  Remove
+                </p>
+              </div>
+            )}
+            {props.fileState.uploading ? (
               <div
                 className="dropzone_box"
                 style={{
@@ -260,9 +245,9 @@ export default function File(props) {
                 </div>
               </div>
             ) : null}
-            {props.files.length <= 1 && (
+            {!props.fileState.name && (
               <Dropzone
-                onDrop={(e) => onDrop(e)}
+                onDrop={(e) => props.onDrop(e)}
                 multiple={false}
                 className="dropzone_box"
                 style={{
