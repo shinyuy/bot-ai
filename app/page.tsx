@@ -51,7 +51,7 @@ export default function Page() {
           <div className="w-wull flex flex-col md:flex-row md:h-screen justify-center px-2 md:px-32 mb-48 md:mb-0">
             <div className="flex w-full md:w-1/2 pb-12 md:pb-0 items-start justify-end">
               <Image
-                src={'/dashboard.png'}
+                src={'/dashboard.jpg'}
                 alt="Chatbot"
                 width={0}
                 height={0}
