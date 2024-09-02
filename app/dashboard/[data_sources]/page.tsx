@@ -8,6 +8,7 @@ import CompanyInfo from '../../../components/forms/multi-step-form/company-info'
 import DataSource from '../../../components/forms/multi-step-form/data-source';
 import FileUpload from '../../../components/forms/multi-step-form/file';
 import Success from '../../../components/forms/multi-step-form/success';
+import { useRetrieveDataStoresQuery } from '../../../redux/features/datastoreApiSlice';
 
 function getStepContent(step: number, setActiveStep) {
     switch (step) {
@@ -27,6 +28,7 @@ function getStepContent(step: number, setActiveStep) {
 
 export default function Page() {
     // const { data: user, isLoading, isFetching } = useRetrieveUserQuery();
+    const { data: datastores, isFetching } = useRetrieveDataStoresQuery('');
     const [company, setCompany] = useState({});
     const [done, setDone] = useState(false);
     const { name, website, isLoading, onChange, onSubmit } = useAddCompany();
@@ -72,6 +74,11 @@ export default function Page() {
                         {getStepContent(activeStep, setActiveStep)}
                     </>
                 </div>
+                {datastores?.map((d, i) => {
+                    return (
+                        <p key={i}>{d.name}</p>
+                    )
+                })}
             </div>
         </div>
     );

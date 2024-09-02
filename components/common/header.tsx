@@ -42,7 +42,7 @@ const Header = () => {
 
         <div className="hidden md:block">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-300 text-center">
-            <span className="text-sm font-semibold">HQ</span>
+            <span className="text-sm font-semibold">JY</span>
           </div>
         </div>
       </div>
