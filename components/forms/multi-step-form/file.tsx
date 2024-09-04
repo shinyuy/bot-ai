@@ -52,7 +52,7 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
         const pdfText = await pdfToText(pdf);
         setFileState({ ...fileState, name: pdf.name, textContent: pdfText })
         if (!website) {
-          setWebsite(companies[0].name)
+          setWebsite(companies[0].website)
           setId(companies[0].id)
         }
 
@@ -81,7 +81,7 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
   const imagesHandler = (files) => {
     // setCompany({...company})
   };
-
+  console.log(id);
   return (
     <div className="flex min-h-80 w-full flex-col items-center">
       <h4 className="stepper_step_heading my-8">File Upload</h4>
@@ -89,10 +89,10 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
         <div>
           <label className='' htmlFor="company">Company to associate data with</label>
 
-          <select onChange={e => { setWebsite(e.target.value.split(" ")[0]); setWebsite(e.target.value.split(" ")[1]) }} className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          <select onChange={e => { setWebsite(e.target.value.split(" ")[0]); setId(e.target.value.split(" ")[1]) }} className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             name="company" id="company">
             {companies?.map((com, i) =>
-              <option key={i} value={com.name + " " + com.id}>{com.name}</option>
+              <option key={i} value={com.website + " " + com.id}>{com.name}</option>
             )}
           </select> </div>
         {fileState.error && <p className='text-red-900'>{fileState.error}</p>}

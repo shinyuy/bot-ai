@@ -19,6 +19,11 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <Icon icon="lucide:folder" width="24" height="24" />,
   },
   {
+    title: 'Chats History',
+    path: '/dashboard/chats',
+    icon: <Icon icon="lucide:folder" width="24" height="24" />,
+  },
+  {
     title: 'Settings',
     path: '/dashboard/settings',
     icon: <Icon icon="lucide:settings" width="24" height="24" />,
