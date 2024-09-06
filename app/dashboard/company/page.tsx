@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { useAddCompany } from '../../../hooks';
 import StepperIndicator from '../../../components/forms/multi-step-form/stepper-indicator';
 import CompanyInfo from '../../../components/forms/multi-step-form/company-info';
-import DataSource from '../../../components/forms/multi-step-form/data-source';
 import FileUpload from '../../../components/forms/multi-step-form/file';
 import Success from '../../../components/forms/multi-step-form/success';
 
@@ -14,12 +13,10 @@ function getStepContent(step: number, setActiveStep) {
     case 1:
       return <CompanyInfo />;
     case 2:
-      return <DataSource />;
-    case 3:
       return <FileUpload setActiveStep={setActiveStep} />;
-    case 4:
+    case 3:
       return <Success />;
-    case 5:
+    case 4:
     default:
       return 'Unknown step';
   }
