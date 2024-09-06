@@ -2,7 +2,7 @@ import React from 'react';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
 
-const CheckBox = ({ label, value, checked, setChecked, check }) => {
+const CheckBox = ({ label, value, checked, check }) => {
 
   return (
     <div className="flex items-center">

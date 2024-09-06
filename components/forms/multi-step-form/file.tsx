@@ -135,9 +135,9 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
             Select the type of data sources your chatbot will be using to answer questions
           </p>
           <div className="flex justify-between w-full">
-            <CheckBox label="File/PDF" value="File/PDF" checked={checked} setChecked={setChecked} check={() => setChecked("File/PDF")} />
-            <CheckBox label="Website" value="Website" checked={checked} setChecked={setChecked} check={() => setChecked("Website")} />
-            <CheckBox label="Database" value="Database" checked={checked} setChecked={setChecked} check={() => setChecked("Database")} />
+            <CheckBox label="File/PDF" value="File/PDF" checked={checked} check={() => setChecked("File/PDF")} />
+            <CheckBox label="Website" value="Website" checked={checked} check={() => setChecked("Website")} />
+            <CheckBox label="Database" value="Database" checked={checked} check={() => setChecked("Database")} />
           </div>
         </div>
 
