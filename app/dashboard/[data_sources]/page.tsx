@@ -29,7 +29,7 @@ export default function Page() {
     const [company, setCompany] = useState({});
     const [done, setDone] = useState(false);
     const { name, website, isLoading, onChange, onSubmit } = useAddCompany();
-    const [activeStep, setActiveStep] = useState(3);
+    const [activeStep, setActiveStep] = useState(2);
     const [erroredInputName, setErroredInputName] = useState('');
 
     useEffect(() => {

@@ -40,7 +40,7 @@ export default function Page() {
                             {chats?.map((chat, i) => {
                                 return (
                                     <tr className="hover:bg-gray-100 dark:hover:bg-gray-100 hover:cursor-pointer">
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium  text-black">{chat.question}</td>
+                                        <td className="px-6 truncate py-4 whitespace-nowrap text-sm font-medium  text-black">{chat.question}</td>
                                         <td className="px-6 truncate py-4 whitespace-nowrap text-sm font-medium text-black">{chat.answer}</td>
                                         <td className="px-6 w-32 py-4 whitespace-nowrap text-sm font-medium text-black">{chat.created_at.slice(0, 10)}</td>
                                         <td className="px-6 w-32 py-4 whitespace-nowrap text-sm font-medium text-black">{chat.data_source}</td>
