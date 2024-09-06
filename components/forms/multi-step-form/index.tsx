@@ -13,7 +13,6 @@ import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { Button } from './ui/button';
 import { toast } from './ui/use-toast';
 import FileUpload from './file';
-import DataSource from './data-source';
 import CompanyInfo from './company-info';
 import Success from './success';
 
@@ -30,12 +29,10 @@ function getStepContent(step: number, setActiveStep) {
     case 1:
       return <CompanyInfo />;
     case 2:
-      return <DataSource />;
-    case 3:
       return <FileUpload setActiveStep={setActiveStep} />;
-    case 4:
+    case 3:
       return <Success />;
-    case 5:
+    case 4:
     default:
       return 'Unknown step';
   }
