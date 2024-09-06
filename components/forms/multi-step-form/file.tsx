@@ -11,6 +11,7 @@ import { useSearchParams } from 'next/navigation';
 import pdfToText from 'react-pdftotext';
 import { toast } from 'react-toastify';
 // import { useAppDispatch } from '@/redux/hooks';
+import CheckBox from './ui/checkbox';
 
 const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
   // const dispatch = useAppDispatch();
@@ -19,6 +20,8 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
   const searchParams = useSearchParams();
   const [website, setWebsite] = useState(searchParams.get('website'))
   const [id, setId] = useState(searchParams.get('company_id'))
+  const [checked, setChecked] = useState("File/PDF");
+  const [websiteURL, setWebsiteURL] = useState("")
 
   const [company, setCompany] = useState({});
   const [done, setDone] = useState(false);
@@ -78,10 +81,42 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
       });
   }
 
+  const scrape = async () => {
+    setFileState({ ...fileState, error: '', uploading: true });
+    let res = await fetch(`https://r.jina.ai/${websiteURL}`, {
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer jina_10568554771c46eca0d4caffc253fb66bMCO5AhkNkQpzHwfSkFOQJ-tChbA"
+      },
+    })
+    let data = await res.text()
+    console.log(data)
+
+    if (!website) {
+      setWebsite(companies[0].website)
+      setId(companies[0].id)
+    }
+    if (!website) {
+      setFileState({ ...fileState, error: "Select/Add company to associate data with" })
+      return
+    }
+    await file({ pdfText: data, name: websiteURL, website, id })
+      .unwrap()
+      .then(() => {
+        //dispatch(setAuth());
+        toast.success('File upload');
+        setActiveStep(4)
+      })
+      .catch(() => {
+        toast.error('Failed to upload file');
+      });
+
+  }
+
   const imagesHandler = (files) => {
     // setCompany({...company})
   };
-  console.log(id);
+
   return (
     <div className="flex min-h-80 w-full flex-col items-center">
       <h4 className="stepper_step_heading my-8">File Upload</h4>
@@ -95,32 +130,72 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
               <option key={i} value={com.website + " " + com.id}>{com.name}</option>
             )}
           </select> </div>
-        {fileState.error && <p className='text-red-900'>{fileState.error}</p>}
-        <div className="mb-8 w-full">
-          <File
-            imagesHandler={(images) => imagesHandler(images)}
-            reset={false}
-            company={company}
-            setCompany={setCompany}
-            setDone={setDone}
-            files={[]}
+        <div className='my-16'>
+          <p className="mb-8">
+            Select the type of data sources your chatbot will be using to answer questions
+          </p>
+          <div className="flex justify-between w-full">
+            <CheckBox label="File/PDF" value="File/PDF" checked={checked} setChecked={setChecked} check={() => setChecked("File/PDF")} />
+            <CheckBox label="Website" value="Website" checked={checked} setChecked={setChecked} check={() => setChecked("Website")} />
+            <CheckBox label="Database" value="Database" checked={checked} setChecked={setChecked} check={() => setChecked("Database")} />
+          </div>
+        </div>
+
+        {checked === "File/PDF" &&
+          <>
+            {fileState.error && <p className='text-red-900'>{fileState.error}</p>}
+            <div className="mb-8 w-full">
+              <File
+                imagesHandler={(images) => imagesHandler(images)}
+                reset={false}
+                company={company}
+                setCompany={setCompany}
+                setDone={setDone}
+                files={[]}
 
 
-            onDrop={onDrop}
-            fileState={fileState}
-            setFileState={setFileState}
-          />
-        </div>
-        <div>
-          <button
-            type="button"
-            onClick={handleSubmit}
-            className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            disabled={isLoading}
-          >
-            {isLoading || fileState.uploading ? <Spinner sm /> : `Upload`}
-          </button>
-        </div>
+                onDrop={onDrop}
+                fileState={fileState}
+                setFileState={setFileState}
+              />
+            </div>
+            <div>
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                disabled={isLoading}
+              >
+                {isLoading || fileState.uploading ? <Spinner sm /> : `Upload`}
+              </button>
+            </div>
+          </>}
+
+        {
+          checked === "Website" && <>
+            <div>
+              <label className='' htmlFor="company">Webpage URL you want to scrape data from with https</label>
+              <input
+                className="block mb-16 w-full border-gray-400 rounded-md border px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+
+                type={"text"}
+                onChange={(e) => setWebsiteURL(e.target.value)}
+                value={websiteURL}
+                required={true}
+              />
+            </div>
+            <div>
+              <button
+                type="button"
+                onClick={scrape}
+                className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                disabled={isLoading}
+              >
+                {isLoading || fileState.uploading ? <Spinner sm /> : `Scrape Website`}
+              </button>
+            </div>
+          </>
+        }
       </div>
     </div>
   );

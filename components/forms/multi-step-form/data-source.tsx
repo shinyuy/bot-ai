@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { useState } from 'react';
 
 import { StepperFormValues } from '../../types/hook-stepper';
 
@@ -6,12 +6,7 @@ import CheckBox from './ui/checkbox';
 
 
 const DataSource = () => {
-  const {
-    control,
-    trigger,
-    formState: { errors },
-    register,
-  } = useFormContext<StepperFormValues>();
+  const [checked, setChecked] = useState("");
 
   return (
     <div className="flex min-h-80 w-full flex-col items-center">
@@ -20,9 +15,9 @@ const DataSource = () => {
         Select the type of data sources your chatbot will be using to answer questions
       </p>
       <div className="stepper_step_container w-3/4">
-        <CheckBox label="File/PDF " value="" />
-        <CheckBox label="Website" value="" />
-        <CheckBox label="Database" value="" />
+        <CheckBox label="File/PDF " value="File/PDF" checked={checked} setChecked={setChecked} />
+        <CheckBox label="Website" value="Website" checked={checked} setChecked={setChecked} />
+        <CheckBox label="Database" value="Database" checked={checked} setChecked={setChecked} />
       </div>
     </div>
   );
