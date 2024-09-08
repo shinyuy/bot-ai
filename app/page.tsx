@@ -371,7 +371,7 @@ export default function Page() {
               {/* Placeholder for Train Chatbot Image */}
               <div className="w-full h-48 mt-6 relative">
                 <Image
-                  src={'/dashboard2.JPG'}  // Placeholder image path
+                  src={'/dashboard2.jpg'}  // Placeholder image path
                   alt="Train the Chatbot"
                   layout="fill"
                   objectFit="contain"
