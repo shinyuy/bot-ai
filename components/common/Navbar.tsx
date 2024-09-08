@@ -46,12 +46,12 @@ export default function Navbar() {
         Pricing
       </NavLink>
       <NavLink isSelected={isSelected('/auth/login')} isMobile={isMobile} href="/auth/login">
-        <button className="rounded-full border border-sky-500 bg-black px-8 py-2 text-sky-500">
+        <button className="rounded-full border border-sky-500 bg-black px-8 py-2 text-sky-500 hover:bg-gray-900 transition duration-200">
           Login
         </button>
       </NavLink>
       <NavLink isSelected={isSelected('/auth/register')} isMobile={isMobile} href="/auth/register">
-        <button className="rounded-full bg-black bg-sky-500 px-8 py-2 text-white">Register</button>
+        <button className="rounded-full bg-black bg-sky-500 px-8 py-2 text-white text-white hover:bg-sky-600 transition duration-200">Register</button>
       </NavLink>
     </>
   );

@@ -74,7 +74,7 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
       .then(() => {
         //dispatch(setAuth());
         toast.success('File upload');
-        setActiveStep(4)
+        setActiveStep(3)
       })
       .catch(() => {
         toast.error('Failed to upload file');
@@ -105,7 +105,7 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
       .then(() => {
         //dispatch(setAuth());
         toast.success('File upload');
-        setActiveStep(4)
+        setActiveStep(3)
       })
       .catch(() => {
         toast.error('Failed to upload file');
