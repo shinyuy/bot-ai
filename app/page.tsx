@@ -44,6 +44,7 @@ export default function Page() {
             />
           </div>
         </section>
+
         {/* <div className="flex w-full mt-36 md:mt-0 justify-center">
           <h2 className="text-32 mb-8 md:mb-8 text-4xl font-bold">How It Works</h2>
         </div>
