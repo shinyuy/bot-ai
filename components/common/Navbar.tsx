@@ -46,24 +46,24 @@ export default function Navbar() {
         Pricing
       </NavLink>
       <NavLink isSelected={isSelected('/auth/login')} isMobile={isMobile} href="/auth/login">
-        <button className="rounded-full border border-sky-500 bg-black px-8 py-2 text-sky-500 hover:bg-gray-900 transition duration-200">
+        <button className="rounded-full border border-sky-500 bg-gray-800 px-8 py-2 text-sky-500 hover:bg-gray-900 transition duration-200">
           Login
         </button>
       </NavLink>
       <NavLink isSelected={isSelected('/auth/register')} isMobile={isMobile} href="/auth/register">
-        <button className="rounded-full bg-black bg-sky-500 px-8 py-2 text-white text-white hover:bg-sky-600 transition duration-200">Register</button>
+        <button className="rounded-full bg-gray-800 bg-sky-500 px-8 py-2 text-white text-white hover:bg-sky-600 transition duration-200">Register</button>
       </NavLink>
     </>
   );
 
   return (
-    <Disclosure as="nav" className="bg-black">
+    <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
-          <div className="mx-auto px-24 bg-black">
-            <div className="relative bg-black flex h-16 items-center justify-between">
-              <div className="absolute bg-black inset-y-0 left-0 flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex bg-black items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+          <div className="mx-auto px-24 bg-gray-800">
+            <div className="relative bg-gray-800 flex h-16 items-center justify-between">
+              <div className="absolute bg-gray-800 inset-y-0 left-0 flex items-center sm:hidden">
+                <Disclosure.Button className="inline-flex bg-gray-800 items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -72,7 +72,7 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 bg-black items-center justify-center sm:items-center sm:justify-between">
+              <div className="flex flex-1 bg-gray-800 items-center justify-center sm:items-center sm:justify-between">
                 <div className="flex flex-shrink-0 items-center">
                   <NavLink href="/" isBanner>
                     Bot AI
@@ -87,7 +87,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden bg-black">
+          <Disclosure.Panel className="sm:hidden bg-gray-800">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {isAuthenticated ? authLinks(true) : guestLinks(true)}
             </div>

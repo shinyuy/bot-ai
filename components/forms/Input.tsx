@@ -26,7 +26,7 @@ export default function Input({
   return (
     <div>
       <div className="align-center flex justify-between">
-        <label htmlFor={labelId} className="block text-sm font-medium leading-6 text-gray-900">
+        <label htmlFor={labelId} className="block text-sm font-medium leading-6 text-gray-800">
           {children}
         </label>
         {link && (

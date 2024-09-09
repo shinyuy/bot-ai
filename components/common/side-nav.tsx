@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useAppDispatch } from '../../redux/hooks';
 import { useLogoutMutation } from '../../redux/features/authApiSlice';
 import { logout as setLogout } from '../../redux/features/authSlice';
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 import { SIDENAV_ITEMS } from '../../constants';
 import { SideNavItem } from '../../types';
@@ -43,9 +44,9 @@ const SideNav = () => {
         </div>
       </div>
       <span className="flex justify-center" onClick={handleLogout}>
-        <Icon icon="el:off" color="red" width="24" height="24" />
+        <RiLogoutCircleLine className="text-4xl mr-3" color="red" />
 
-        <span className="cursor-pointer px-8 font-bold text-red-800" onClick={handleLogout}>
+        <span style={{ color: 'red' }} className="cursor-pointer px-8 font-bold" onClick={handleLogout}>
           Logout
         </span>
       </span>
@@ -68,9 +69,8 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         <>
           <button
             onClick={toggleSubMenu}
-            className={`hover-bg-zinc-100 flex w-full flex-row items-center justify-between rounded-lg p-2 hover:bg-zinc-100 ${
-              pathname.includes(item.path) ? 'bg-zinc-100' : ''
-            }`}
+            className={`hover-bg-zinc-100 flex w-full flex-row items-center justify-between rounded-lg p-2 hover:bg-zinc-100 ${pathname.includes(item.path) ? 'bg-zinc-100' : ''
+              }`}
           >
             <div className="flex flex-row items-center space-x-4 text-black">
               {item.icon}
@@ -85,9 +85,11 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
       ) : (
         <Link
           href={item.path}
-          className={`flex flex-row items-center space-x-4 rounded-lg p-2 text-black ${
-            item.path === pathname ? 'bg-zinc-100' : ''
-          }`}
+          // className={`flex flex-row items-center space-x-4 rounded-lg p-2 text-black ${item.path === pathname ? 'bg-zinc-100' : ''
+          //   }`}
+
+          className={`flex items-center text-gray-800 mb-4 p-2 cursor-pointer rounded-lg ${item.path === pathname ? 'bg-gray-100' : 'hover:bg-gray-100'
+            }`}
         >
           {item.icon}
           <span className="flex text-xl">{item.title}</span>

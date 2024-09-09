@@ -8,6 +8,7 @@ import CompanyInfo from '../../../components/forms/multi-step-form/company-info'
 import FileUpload from '../../../components/forms/multi-step-form/file';
 import Success from '../../../components/forms/multi-step-form/success';
 import { useRetrieveDataStoresQuery } from '../../../redux/features/datastoreApiSlice';
+import { FaFilePdf, FaGlobe, FaPlus, FaTrash } from 'react-icons/fa';
 
 function getStepContent(step: number, setActiveStep) {
     switch (step) {
@@ -31,6 +32,7 @@ export default function Page() {
     const { name, website, isLoading, onChange, onSubmit } = useAddCompany();
     const [activeStep, setActiveStep] = useState(2);
     const [erroredInputName, setErroredInputName] = useState('');
+    const [create, setCreate] = useState(false)
 
     useEffect(() => {
         const erroredInputElement = document.getElementsByName(erroredInputName)?.[0];
@@ -63,7 +65,51 @@ export default function Page() {
 
     return (
         <div>
-            <div>
+            {!create && <div className="bg-gray-100 min-h-screen p-8">
+                <h1 className="text-4xl font-bold text-gray-800">Manage Data Sources</h1>
+                <p className="text-xl text-gray-600 mt-2">Connect and manage data sources for your chatbots.</p>
+
+                <div className="mt-8 space-y-6">
+                    {/* Data Source List */}
+                    <div className="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
+                        <div className="flex items-center space-x-4">
+                            <FaFilePdf className="text-red-600 text-3xl" />
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-800">Connected PDF: "Product Manual"</h2>
+                                <p className="text-gray-600">Source Type: PDF</p>
+                            </div>
+                        </div>
+                        <button className="text-white py-2 px-4 rounded-lg hover:cursor-pointer flex items-center space-x-2">
+                            <FaTrash className='text-red-900' />
+                            <span>Disconnect</span>
+                        </button>
+                    </div>
+
+                    <div className="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
+                        <div className="flex items-center space-x-4">
+                            <FaGlobe className="text-blue-600 text-3xl" />
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-800">Connected Website: "Company Blog"</h2>
+                                <p className="text-gray-600">Source Type: Website</p>
+                            </div>
+                        </div>
+                        <button className="text-white py-2 px-4 rounded-lg hover:cursor-pointer flex items-center space-x-2">
+                            <FaTrash className='text-red-900' />
+                            <span>Disconnect</span>
+                        </button>
+                    </div>
+
+                    {/* Add New Data Source Button */}
+                    <button onClick={() => setCreate(!create)} className="bg-gray-800 text-white py-2 px-6 rounded-lg hover:bg-gray-900 flex items-center space-x-2">
+                        <FaPlus />
+                        <span>Add New Data Source</span>
+                    </button>
+                </div>
+            </div>}
+
+
+
+            {create && <div>
                 <h1 className="mb-[50px] text-center text-[24px] font-bold">Create a Chatbot</h1>
                 <div>
                     <StepperIndicator activeStep={activeStep} />
@@ -76,7 +122,7 @@ export default function Page() {
                         <p key={i}>{d.name}</p>
                     )
                 })}
-            </div>
+            </div>}
         </div>
     );
 }
