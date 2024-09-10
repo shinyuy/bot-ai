@@ -11,10 +11,11 @@ export default function useAddCompany() {
     name: '',
     website: '',
     phone: '',
+    industry: '',
     country: ''
   });
 
-  const { name, website, phone, country } = formData;
+  const { name, website, phone, industry, country } = formData;
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     
@@ -25,7 +26,7 @@ export default function useAddCompany() {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    addCompany({ name, website, phone, country })
+    addCompany({ name, website, phone, industry, country })
       .unwrap()
       .then(() => {
         toast.success('Company added!');
@@ -40,6 +41,7 @@ export default function useAddCompany() {
     name,
     website,
     phone,
+    industry,
     country,
     isLoading,
     onChange,

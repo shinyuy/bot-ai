@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent } from 'react';
 import { Input } from '../forms';
 import { Spinner } from '../common';
 import data from '../../utils/countries.json';
+import { industries } from '../../utils/industries';
 
 interface Config {
   labelText: string;
@@ -34,13 +35,27 @@ export default function Form({ config, isLoading, btnText, onChange, onSubmit }:
         if (input.labelId === 'country') {
           return (
             <div>
-              <label className='' htmlFor="country">Country where your business is based</label>
+              <label className='block text-sm font-medium leading-6 text-gray-800' htmlFor="country">Country where your business is based</label>
 
               <select onChange={e => handleChange(e)} value={input.value} className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 name="country" id="country">
                 <option value="">Select country</option>
                 {data.countries.map((country, i) =>
                   <option key={i} value={country.name}>{country.name}</option>
+                )}
+              </select> </div>
+          )
+
+        } else if (input.labelId === 'industry') {
+          return (
+            <div>
+              <label className='block text-sm font-medium leading-6 text-gray-800' htmlFor="industry">Which industry does your company operate in ?</label>
+
+              <select onChange={e => handleChange(e)} value={input.value} className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="industry" id="industry">
+                <option value="">Select industry</option>
+                {industries.map((industry, i) =>
+                  <option key={i} value={industry}>{industry}</option>
                 )}
               </select> </div>
           )

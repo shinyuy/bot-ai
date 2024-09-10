@@ -4,7 +4,7 @@ import { useAddCompany } from '../../hooks';
 import { Form } from '../forms';
 
 const CompanyInfo = () => {
-    const { name, website, phone, country, isLoading, onChange, onSubmit } = useAddCompany();
+    const { name, website, phone, industry, country, isLoading, onChange, onSubmit } = useAddCompany();
 
 
     const config = [
@@ -27,6 +27,13 @@ const CompanyInfo = () => {
             labelId: 'phone',
             type: 'text',
             value: phone,
+            required: true,
+        },
+        {
+            labelText: 'Industry',
+            labelId: 'industry',
+            type: 'text',
+            value: industry,
             required: true,
         },
         {

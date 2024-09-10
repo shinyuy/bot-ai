@@ -15,11 +15,11 @@ const StepperIndicator = ({ activeStep }: StepperIndicatorProps) => {
                     <div
                         className={clsx(
                             "w-[40px] h-[40px] flex justify-center items-center m-[5px] border-[2px] rounded-full",
-                            step < activeStep && "bg-primary text-white",
-                            step === activeStep && "border-primary text-primary"
+                            step < activeStep && "bg-primary text-white text-white bg-gray-800",
+                            step === activeStep && "border-primary text-white bg-gray-800"
                         )}
                     >
-                        {step >= activeStep ? step : <Check className="h-5 w-5" />}
+                        {step >= activeStep ? step : <Check className="h-5 w-5 text-white bg-gray-800" />}
                     </div>
                     {step !== 5 && (
                         <Separator

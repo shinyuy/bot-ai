@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export default function Page() {
     const { data: companies } = useRetrieveCompaniesQuery('');
-    const { data: chats, isLoading, isFetching } = useRetrieveChatsQuery({ company_id: companies && companies[0].id });
+    const { data: chats, isLoading, isFetching } = useRetrieveChatsQuery({ company_id: companies && companies[0]?.id });
 
     useEffect(() => {
 
@@ -37,8 +37,8 @@ export default function Page() {
                     </tr>
                 </thead>
                 <tbody>
-                    {chats.map((chat) => (
-                        <tr key={chat.id} className="border-b">
+                    {chats?.map((chat, i) => (
+                        <tr key={i} className="border-b">
                             <td className="py-2 px-4">{chat.data_source}</td>
                             <td className="py-2 px-4">{chat.question}</td>
                             <td className="py-2 px-4">{chat.answer}</td>
@@ -49,7 +49,7 @@ export default function Page() {
             </table>
 
             {/* Placeholder for empty state */}
-            {chats.length === 0 && (
+            {chats?.length === 0 && (
                 <div className="text-center py-4">
                     <p className="text-gray-600">No chat history available yet.</p>
                 </div>
