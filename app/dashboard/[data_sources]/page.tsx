@@ -69,41 +69,49 @@ export default function Page() {
                 <h1 className="text-4xl font-bold text-gray-800">Manage Data Sources</h1>
                 <p className="text-xl text-gray-600 mt-2">Connect and manage data sources for your chatbots.</p>
 
+                {/* Add New Data Source Button */}
+                <button onClick={() => setCreate(!create)} className="bg-gray-800 mt-8 text-white py-2 px-6 rounded-lg hover:bg-gray-900 flex items-center space-x-2">
+                    <FaPlus />
+                    <span>Add New Data Source</span>
+                </button>
                 <div className="mt-8 space-y-6">
                     {/* Data Source List */}
-                    <div className="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
-                        <div className="flex items-center space-x-4">
-                            <FaFilePdf className="text-red-600 text-3xl" />
-                            <div>
-                                <h2 className="text-2xl font-bold text-gray-800">Connected PDF: "Product Manual"</h2>
-                                <p className="text-gray-600">Source Type: PDF</p>
-                            </div>
-                        </div>
-                        <button className="text-white py-2 px-4 rounded-lg hover:cursor-pointer flex items-center space-x-2">
-                            <FaTrash className='text-red-900' />
-                            <span>Disconnect</span>
-                        </button>
-                    </div>
+                    {datastores?.map((datastore, i) => {
+                        if (datastore.name.split(".")[datastore.name.split(".").length - 1] === "pdf") {
+                            return (
+                                <div className="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
+                                    <div className="flex items-center space-x-4">
+                                        <FaFilePdf className="text-red-600 text-3xl" />
+                                        <div>
+                                            <h2 className="text-2xl font-bold text-gray-800">Connected PDF: {datastore.name}</h2>
+                                            <p className="text-gray-600">Source Type: PDF</p>
+                                        </div>
+                                    </div>
+                                    <button className="text-white py-2 px-4 rounded-lg hover:cursor-pointer flex items-center space-x-2">
+                                        <FaTrash className='text-red-900' />
+                                        <span>Disconnect</span>
+                                    </button>
+                                </div>
+                            )
+                        } else {
+                            return (
+                                <div className="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
+                                    <div className="flex items-center space-x-4">
+                                        <FaGlobe className="text-blue-600 text-3xl" />
+                                        <div>
+                                            <h2 className="text-2xl font-bold text-gray-800">Connected Website: {datastore.name}</h2>
+                                            <p className="text-gray-600">Source Type: Website</p>
+                                        </div>
+                                    </div>
+                                    <button className="text-white py-2 px-4 rounded-lg hover:cursor-pointer flex items-center space-x-2">
+                                        <FaTrash className='text-red-900' />
+                                        <span>Disconnect</span>
+                                    </button>
+                                </div>
+                            )
+                        }
 
-                    <div className="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
-                        <div className="flex items-center space-x-4">
-                            <FaGlobe className="text-blue-600 text-3xl" />
-                            <div>
-                                <h2 className="text-2xl font-bold text-gray-800">Connected Website: "Company Blog"</h2>
-                                <p className="text-gray-600">Source Type: Website</p>
-                            </div>
-                        </div>
-                        <button className="text-white py-2 px-4 rounded-lg hover:cursor-pointer flex items-center space-x-2">
-                            <FaTrash className='text-red-900' />
-                            <span>Disconnect</span>
-                        </button>
-                    </div>
-
-                    {/* Add New Data Source Button */}
-                    <button onClick={() => setCreate(!create)} className="bg-gray-800 text-white py-2 px-6 rounded-lg hover:bg-gray-900 flex items-center space-x-2">
-                        <FaPlus />
-                        <span>Add New Data Source</span>
-                    </button>
+                    })}
                 </div>
             </div>}
 
@@ -117,11 +125,6 @@ export default function Page() {
                         {getStepContent(activeStep, setActiveStep)}
                     </>
                 </div>
-                {datastores?.map((d, i) => {
-                    return (
-                        <p key={i}>{d.name}</p>
-                    )
-                })}
             </div>}
         </div>
     );

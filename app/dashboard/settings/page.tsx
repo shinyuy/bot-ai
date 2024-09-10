@@ -10,13 +10,13 @@ const AccountSettings = () => {
             <div className="bg-white shadow-lg rounded-lg p-6 mt-8">
                 <h2 className="text-xl font-semibold text-gray-800">Personal Information</h2>
                 <p className="text-gray-600 mt-4">Email: user@example.com</p>
-                <button className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Edit</button>
+                <button className="mt-4 bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-900">Edit</button>
             </div>
 
             <div className="bg-white shadow-lg rounded-lg p-6 mt-8">
                 <h2 className="text-xl font-semibold text-gray-800">Subscription Plan</h2>
                 <p className="text-gray-600 mt-4">Current Plan: Pro ($49/month)</p>
-                <button className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Upgrade</button>
+                <button className="mt-4 bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-900">Upgrade</button>
             </div>
         </div>
     );

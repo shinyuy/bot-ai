@@ -21,12 +21,12 @@ const ManageChatbots = () => {
                         <p className="text-gray-600">Data Source: PDF</p>
                     </div>
                     <div className="flex space-x-4">
-                        <button className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 flex items-center space-x-2">
-                            <FaEdit />
+                        <button className=" text-white py-2 px-4 rounded-lg flex items-center space-x-2">
+                            <FaEdit className='text-black' />
                             <span>Edit</span>
                         </button>
-                        <button className="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 flex items-center space-x-2">
-                            <FaTrash />
+                        <button className="text-white py-2 px-4 rounded-lg flex items-center space-x-2">
+                            <FaTrash className='text-red-900' />
                             <span>Delete</span>
                         </button>
                     </div>
@@ -34,7 +34,7 @@ const ManageChatbots = () => {
 
                 {/* Add Chatbot Button */}
                 <button
-                    className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 flex items-center space-x-2"
+                    className="bg-gray-800 text-white py-2 px-6 rounded-lg hover:bg-gray-900 flex items-center space-x-2"
                     onClick={handleModalToggle}
                 >
                     <FaPlus />

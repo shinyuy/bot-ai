@@ -11,7 +11,7 @@ const AnalyticsPage = () => {
                 {["Total Chats", "Active Sessions", "Users", "CSAT Score"].map((stat, i) => (
                     <div key={i} className="bg-white shadow-md p-6 rounded-lg">
                         <h2 className="text-xl font-semibold mb-2">{stat}</h2>
-                        <p className="text-2xl font-bold">[Data Here]</p>
+                        <p className="text-2xl font-bold">1862</p>
                     </div>
                 ))}
             </div>
@@ -20,7 +20,7 @@ const AnalyticsPage = () => {
             <div className="bg-white shadow-md p-6 rounded-lg mb-8">
                 <h2 className="text-2xl font-semibold mb-4">Engagement Over Time</h2>
                 {/* Placeholder for Chart */}
-                <div className="h-48 bg-gray-100 rounded-lg mb-4">[Chart Component]</div>
+                <div className="h-56 bg-gray-100 rounded-lg mb-4">Chart Component</div>
             </div>
 
             {/* Company-Based Insights */}
@@ -39,10 +39,10 @@ const AnalyticsPage = () => {
                         <tbody>
                             {/* Data Rows */}
                             <tr>
-                                <td className="py-2">[Company A]</td>
-                                <td className="py-2">[Data]</td>
-                                <td className="py-2">[Data]</td>
-                                <td className="py-2">[Data]</td>
+                                <td className="py-2">Company A</td>
+                                <td className="py-2">Data</td>
+                                <td className="py-2">Data</td>
+                                <td className="py-2">Data</td>
                             </tr>
                             {/* More Rows */}
                         </tbody>

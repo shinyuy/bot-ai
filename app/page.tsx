@@ -25,9 +25,10 @@ export default function Page() {
               </p>
             </div>
             <div className='flex flex-col md:flex-row items-center md:items-start w-full'>
-              <button className="md:mr-8 mt-8 w-72 rounded-full bg-sky-500 px-8 py-4 text-xl text-white">
-                Get Started for Free
-              </button>
+              <Link href={"/auth/register"}>
+                <button className="md:mr-8 mt-8 w-72 rounded-full bg-sky-500 px-8 py-4 text-xl text-white">
+                  Get Started for Free
+                </button></Link>
               <button className="mt-8 w-72 rounded-full border border-sky-500 bg-white px-8 py-4 text-sky-500">
                 Request a Demo
               </button>
