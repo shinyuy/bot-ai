@@ -23,37 +23,37 @@ export default function Page() {
     }
 
     return (
-        <section>
-            <div>
-                <h2 className="text-black mt-8">Chat History</h2>
-                <div className=''>
-                    <table className="table-fixed w-full divide-y divide-gray-200 dark:divide-neutral-700 ">
-                        <thead>
-                            <tr className='w-1/2'>
-                                <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Question</th>
-                                <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Answer</th>
-                                <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">On</th>
-                                <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Data Source</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
-                            {chats?.map((chat, i) => {
-                                return (
-                                    <tr className="hover:bg-gray-100 dark:hover:bg-gray-100 hover:cursor-pointer">
-                                        <td className="px-6 truncate py-4 whitespace-nowrap text-sm font-medium  text-black">{chat.question}</td>
-                                        <td className="px-6 truncate py-4 whitespace-nowrap text-sm font-medium text-black">{chat.answer}</td>
-                                        <td className="px-6 w-32 py-4 whitespace-nowrap text-sm font-medium text-black">{chat.created_at.slice(0, 10)}</td>
-                                        <td className="px-6 w-32 py-4 whitespace-nowrap text-sm font-medium text-black">{chat.data_source}</td>
-                                    </tr>
+        <div className="container mx-auto p-6 mb-48">
+            <h1 className="text-2xl text-gray-900 font-bold mb-6">Chat History</h1>
 
-                                )
-                            })}
-                        </tbody>
-                    </table>
+            {/* Chat history table */}
+            <table className="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th className="text-left text-gray-900 py-2 px-4">Data Source</th>
+                        <th className="text-left text-gray-900 py-2 px-4">Question</th>
+                        <th className="text-left text-gray-900 py-2 px-4">Response</th>
+                        <th className="text-left text-gray-900 py-2 px-4">Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {chats.map((chat) => (
+                        <tr key={chat.id} className="border-b">
+                            <td className="py-2 px-4">{chat.data_source}</td>
+                            <td className="py-2 px-4">{chat.question}</td>
+                            <td className="py-2 px-4">{chat.answer}</td>
+                            <td className="py-2 px-4">{chat.created_at.slice(0, 10)}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
+            {/* Placeholder for empty state */}
+            {chats.length === 0 && (
+                <div className="text-center py-4">
+                    <p className="text-gray-600">No chat history available yet.</p>
                 </div>
-
-
-            </div>
-        </section>
+            )}
+        </div>
     );
 }

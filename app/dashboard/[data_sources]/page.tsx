@@ -3,10 +3,10 @@
 import { Spinner } from '../../../components/common';
 import { useState, useEffect } from 'react';
 import { useAddCompany } from '../../../hooks';
-import StepperIndicator from '../../../components/forms/multi-step-form/stepper-indicator';
-import CompanyInfo from '../../../components/forms/multi-step-form/company-info';
-import FileUpload from '../../../components/forms/multi-step-form/file';
-import Success from '../../../components/forms/multi-step-form/success';
+import StepperIndicator from '../../../components/forms/StepperIndicator';
+import CompanyInfo from '../../../components/forms/CompanyInfo';
+import FileUpload from '../../../components/forms/File';
+import Success from '../../../components/forms/Success';
 import { useRetrieveDataStoresQuery } from '../../../redux/features/datastoreApiSlice';
 import { FaFilePdf, FaGlobe, FaPlus, FaTrash } from 'react-icons/fa';
 

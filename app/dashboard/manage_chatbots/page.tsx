@@ -52,7 +52,7 @@ const ManageChatbots = () => {
                                 className="border border-gray-300 p-2 rounded-lg w-full"
                             />
                             <button
-                                className="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700"
+                                className="bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-green-700"
                                 onClick={handleModalToggle}
                             >
                                 Add Chatbot

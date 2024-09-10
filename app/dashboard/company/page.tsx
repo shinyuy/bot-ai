@@ -4,10 +4,10 @@ import { FaEdit, FaTrash, FaPlus, FaBuilding } from 'react-icons/fa';
 import { Spinner } from '../../../components/common';
 import { useState, useEffect } from 'react';
 import { useAddCompany } from '../../../hooks';
-import StepperIndicator from '../../../components/forms/multi-step-form/stepper-indicator';
-import CompanyInfo from '../../../components/forms/multi-step-form/company-info';
-import FileUpload from '../../../components/forms/multi-step-form/file';
-import Success from '../../../components/forms/multi-step-form/success';
+import StepperIndicator from '../../../components/forms/StepperIndicator';
+import CompanyInfo from '../../../components/forms/CompanyInfo';
+import FileUpload from '../../../components/forms/File';
+import Success from '../../../components/forms/Success';
 import { useRetrieveCompaniesQuery } from '../../../redux/features/companyApiSlice';
 import { IoCloseOutline } from "react-icons/io5";
 

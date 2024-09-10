@@ -23,39 +23,6 @@ export default function Page() {
 
   return (
     <section>
-      {/* <div>
-        <button className="rounded bg-black px-4 py-2 text-white"><Link href={"/dashboard/company"}>Create a Chatbot</Link></button>
-        <h2 className="text-black mt-8">Your Companies</h2>
-        <div className=''>
-          <table className="w-1/2 divide-y divide-gray-200 dark:divide-neutral-700">
-            <thead>
-              <tr className='w-1/2'>
-                <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Company</th>
-                <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Contact</th>
-                <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Country</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
-              {companies?.map((company, i) => {
-                return (
-                  <tr className="hover:bg-gray-100 dark:hover:bg-gray-100 hover:cursor-pointer">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium  text-black"><Link href={`/dashboard/data_store?website=${company.website}&company_id=${company.id}`}>{company.name}</Link></td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black"><Link href={`/dashboard/data_store?website=${company.website}&company_id=${company.id}`}>{company.website}</Link></td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black"><Link href={`/dashboard/data_store?website=${company.website}&company_id=${company.id}`}>{company.country}</Link></td>
-                  </tr>
-
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-
-
-      </div> */}
-
-
-
-
       <div className="bg-gray-100 min-h-screen p-8">
         <h1 className="text-4xl font-bold text-gray-800">Dashboard Overview</h1>
         <p className="text-xl text-gray-600 mt-2">Monitor your chatbot's performance at a glance.</p>
