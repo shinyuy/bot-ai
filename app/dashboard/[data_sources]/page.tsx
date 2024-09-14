@@ -18,7 +18,7 @@ function getStepContent(step: number, setActiveStep) {
         case 2:
             return <FileUpload setActiveStep={setActiveStep} />;
         case 3:
-            return <Chatbot />;
+            return <Chatbot setActiveStep={setActiveStep} />;
         case 4:
             return <Success />;
         case 5:
