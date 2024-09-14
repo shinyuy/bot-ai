@@ -10,8 +10,11 @@ import pdfToText from 'react-pdftotext';
 import { toast } from 'react-toastify';
 // import { useAppDispatch } from '@/redux/hooks';
 import CheckBox from './Checkbox';
+import { useRouter } from 'next/navigation';
+
 
 const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
+    const router = useRouter();
     // const dispatch = useAppDispatch();
     const { data: companies, isLoading, isFetching } = useRetrieveCompaniesQuery('');
     const [file, { /*isLoading*/ }] = useFileMutation();
@@ -72,7 +75,8 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
             .then(() => {
                 //dispatch(setAuth());
                 toast.success('File upload');
-                setActiveStep(3)
+                router.push('/dashboard/manage_chatbots');
+                // setActiveStep(3)
             })
             .catch(() => {
                 toast.error('Failed to upload file');
@@ -103,7 +107,8 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
             .then(() => {
                 //dispatch(setAuth());
                 toast.success('File upload');
-                setActiveStep(3)
+                router.push('/dashboard/manage_chatbots');
+                // setActiveStep(3)
             })
             .catch(() => {
                 toast.error('Failed to upload file');

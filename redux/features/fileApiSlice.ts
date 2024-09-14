@@ -1,6 +1,6 @@
 import { apiSlice } from '../services/apiSlice';
 
-const authApiSlice = apiSlice.injectEndpoints({
+const fileApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     file: builder.mutation({
       query: ({ pdfText, name, website, id }) => {
@@ -25,4 +25,4 @@ const authApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useFileMutation } = authApiSlice;
+export const { useFileMutation } = fileApiSlice;

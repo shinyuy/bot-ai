@@ -9,7 +9,8 @@ const chatsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     retrieveChats: builder.query({
       query: ({company_id}) => ({
-        url: `/chats/${company_id}`,
+       // url: `/chats/${company_id}`,
+        url: `/chats`,
         method: 'GET',
       }),
     }),

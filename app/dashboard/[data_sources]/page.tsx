@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useAddCompany } from '../../../hooks';
 import StepperIndicator from '../../../components/forms/StepperIndicator';
 import CompanyInfo from '../../../components/forms/CompanyInfo';
+import Chatbot from '../../../components/forms/Chatbot';
 import FileUpload from '../../../components/forms/File';
 import Success from '../../../components/forms/Success';
 import { useRetrieveDataStoresQuery } from '../../../redux/features/datastoreApiSlice';
@@ -17,8 +18,10 @@ function getStepContent(step: number, setActiveStep) {
         case 2:
             return <FileUpload setActiveStep={setActiveStep} />;
         case 3:
-            return <Success />;
+            return <Chatbot />;
         case 4:
+            return <Success />;
+        case 5:
         default:
             return 'Unknown step';
     }

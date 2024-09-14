@@ -9,11 +9,14 @@ import { useLogoutMutation } from '../../redux/features/authApiSlice';
 import { logout as setLogout } from '../../redux/features/authSlice';
 import useScroll from '../../hooks/use-scroll';
 import { cn } from '../../utils';
+import { useRetrieveUserQuery } from '../../redux/features/authApiSlice';
+
 
 const Header = () => {
   const scrolled = useScroll(5);
   const selectedLayout = useSelectedLayoutSegment();
   const dispatch = useAppDispatch();
+  const { data: user, isFetching } = useRetrieveUserQuery();
 
   const [logout] = useLogoutMutation();
 
@@ -42,7 +45,7 @@ const Header = () => {
 
         <div className="hidden md:block">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-300 text-center">
-            <span className="text-sm font-semibold">JY</span>
+            <span className="text-sm font-semibold">{user?.first_name.charAt(0)}{user?.last_name.charAt(0)}</span>
           </div>
         </div>
       </div>

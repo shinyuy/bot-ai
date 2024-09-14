@@ -14,6 +14,7 @@ interface Config {
     linkUrl: string;
   };
   required?: boolean;
+  options?;
 }
 
 interface Props {
@@ -58,6 +59,52 @@ export default function Form({ config, isLoading, btnText, onChange, onSubmit }:
                   <option key={i} value={industry}>{industry}</option>
                 )}
               </select> </div>
+          )
+        } else if (input.labelId === 'company') {
+          return (
+            <div>
+              <label className='block text-sm font-medium leading-6 text-gray-800' htmlFor="industry">Company associated with chatbot</label>
+
+              <select onChange={e => handleChange(e)} value={input.value} className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="industry" id="industry">
+                {/* <option value="">Select industry</option> */}
+                {input.options?.map((company, i) =>
+                  <option key={i} value={company}>{company.name}</option>
+                )}
+              </select> </div>
+          )
+        } else if (input.labelId === 'data_store') {
+          return (
+            <div>
+              <label className='block text-sm font-medium leading-6 text-gray-800' htmlFor="industry">Data Source associated with chatbot</label>
+
+              <select onChange={e => handleChange(e)} value={input.value} className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="industry" id="industry">
+                {/* <option value="">Select industry</option> */}
+                {input.options?.map((data_store, i) =>
+                  <option key={i} value={data_store}>{data_store.name}</option>
+                )}
+              </select> </div>
+          )
+        } else if (input.labelId === 'chatbot_public') {
+          return (
+            <div>
+              {"Chabot Public"}{" "}<br />
+              <div className="toggle-switch">
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  name={"chatbot_public"}
+                  id={"chatbot_public"}
+                  value={input.value}
+                  onChange={(e) => console.log(e.target.value)}
+                />
+                <label className="label" htmlFor={"chatbot_public"}>
+                  <span className="inner" />
+                  <span className="switch" />
+                </label>
+              </div>
+            </div>
           )
         } else {
           return (

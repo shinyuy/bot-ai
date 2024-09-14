@@ -1,14 +1,15 @@
 'use client';
 
-import { useRetrieveCompaniesQuery } from '../../redux/features/companyApiSlice';
+import { useRetrieveStatsQuery } from '../../redux/features/statsApiSlice';
 import { List, Spinner } from '../../components/common';
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { FaComments, FaUserFriends, FaClock } from 'react-icons/fa';
+import { FaComments, FaPlus, FaUserFriends, FaClock } from 'react-icons/fa';
 
 export default function Page() {
-  const { data: companies, isLoading, isFetching } = useRetrieveCompaniesQuery('');
+  const { data: stats, isLoading, isFetching } = useRetrieveStatsQuery({});
 
+  console.log(stats)
   useEffect(() => {
 
   }, []);
@@ -32,26 +33,37 @@ export default function Page() {
           <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4">
             <FaComments className="text-blue-600 text-3xl" />
             <h2 className="text-2xl font-bold text-gray-800">Total Chats</h2>
-            <p className="text-3xl text-blue-600 font-semibold">1,234</p>
+            <p className="text-3xl text-blue-600 font-semibold">{stats?.chats}</p>
             <p className="text-gray-500">Chats handled by your chatbot</p>
           </div>
 
           {/* Active Users */}
           <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4">
             <FaUserFriends className="text-green-600 text-3xl" />
-            <h2 className="text-2xl font-bold text-gray-800">Active Users</h2>
-            <p className="text-3xl text-green-600 font-semibold">89</p>
-            <p className="text-gray-500">Users engaging with the bot</p>
+            <h2 className="text-2xl font-bold text-gray-800">Chatbots</h2>
+            <p className="text-3xl text-green-600 font-semibold">{stats?.chatbots}</p>
+            <p className="text-gray-500">Your Chatbots</p>
           </div>
 
           {/* Average Response Time */}
           <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4">
             <FaClock className="text-yellow-600 text-3xl" />
-            <h2 className="text-2xl font-bold text-gray-800">Avg. Response Time</h2>
-            <p className="text-3xl text-yellow-600 font-semibold">1.2s</p>
-            <p className="text-gray-500">Average time to respond</p>
+            <h2 className="text-2xl font-bold text-gray-800">Data Sources</h2>
+            <p className="text-3xl text-yellow-600 font-semibold">{stats?.data_sources}</p>
+            <p className="text-gray-500">Data sources used by your chatbots</p>
           </div>
         </div>
+
+        <Link href="/dashboard/company">
+          <button
+            className="bg-gray-800 text-white mt-12 py-2 px-6 rounded-lg hover:bg-gray-900 flex items-center space-x-2"
+          // onClick={() => setCreate(!create)}
+          >
+            <FaPlus />
+            <span>Create Chatbot</span>
+          </button>
+        </Link>
+
       </div>
     </section>
   );

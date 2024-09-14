@@ -6,10 +6,12 @@ import { useState, useEffect } from 'react';
 import { useAddCompany } from '../../../hooks';
 import StepperIndicator from '../../../components/forms/StepperIndicator';
 import CompanyInfo from '../../../components/forms/CompanyInfo';
+import Chatbot from '../../../components/forms/Chatbot';
 import FileUpload from '../../../components/forms/File';
 import Success from '../../../components/forms/Success';
 import { useRetrieveCompaniesQuery } from '../../../redux/features/companyApiSlice';
 import { IoCloseOutline } from "react-icons/io5";
+import Link from 'next/link';
 
 function getStepContent(step: number, setActiveStep) {
   switch (step) {
@@ -18,8 +20,10 @@ function getStepContent(step: number, setActiveStep) {
     case 2:
       return <FileUpload setActiveStep={setActiveStep} />;
     case 3:
-      return <Success />;
+      return <Chatbot setActiveStep={setActiveStep} />;
     case 4:
+      return <Success />;
+    case 5:
     default:
       return 'Unknown step';
   }
@@ -76,10 +80,16 @@ export default function Page() {
                     <div>
                       <h2 className="text-2xl font-bold text-gray-800">{company.name}</h2>
                       <p className="text-gray-600">Industry: IT & Software</p>
-                      <p className="text-gray-600">Chatbots: 3</p>
+                      <p className="text-gray-600">Chatbots: {company.number_of_chatbots}</p>
                     </div>
                   </div>
                   <div className="flex space-x-4">
+                    <Link href={`/dashboard/data_store?website=${company.website}&company_id=${company.id}`}>
+                      <button className="bg-white text-gray-800 py-2 px-4 rounded-lg hover:cursor-pointer flex items-center space-x-2">
+                        Create chatbot for {company.name}
+                      </button>
+                    </Link>
+
                     <button className="bg-white text-gray-800 py-2 px-4 rounded-lg hover:cursor-pointer flex items-center space-x-2">
                       <FaEdit className='text-gray-800' />
                     </button>
