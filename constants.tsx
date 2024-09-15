@@ -37,6 +37,11 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <TbMessageChatbot className="text-2xl mr-3" />,
   },
   {
+    title: 'WhatsApp',
+    path: '/dashboard/whatsapp',
+    icon: <FaWhatsapp className="text-2xl mr-3" />,
+  },
+  {
     title: 'Analytics',
     path: '/dashboard/analytics',
     icon: <MdOutlineAnalytics className="text-2xl mr-3" />,
