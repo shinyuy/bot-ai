@@ -33,7 +33,7 @@ export default function Page() {
 
           <div className="flex flex-col md:flex-row lg:flex-row justify-center">
             {/* Basic Plan */}
-            <div className="bg-white p-8 rounded-lg shadow-lg">
+            <div className="bg-white mx-4 md:h-screen lg:h-screen mb-16 md:mb-0 lg:mb-0 w-[400px] p-8 rounded-lg shadow-lg">
               <h2 className="text-2xl font-semibold text-gray-800">Basic Plan</h2>
               <p className="text-lg text-gray-600 mt-4">Perfect for small businesses just getting started.</p>
               <p className="text-4xl font-bold text-gray-800 mt-6">$9/month</p>

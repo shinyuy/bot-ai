@@ -20,7 +20,6 @@ export default function CheckoutButton({ priceId, price, interval, name }) {
   ] = useCreateStripeSessionMutation();
   const [loading, setLoading] = useState(false);
 
-  console.log(user);
   const handleCheckout = async () => {
     setLoading(true);
 
