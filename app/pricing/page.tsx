@@ -5,7 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutButton from "../../components/common/CheckoutButton"
 import { useState } from 'react';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 
 // export const metadata: Metadata = {
@@ -14,9 +14,9 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 // };
 
 
-// const stripePromise = loadStripe(
-//   `pk_live_51KypobBlahmOGMaPGpupV2rrHqjVgulwwtPARoA64BZAqTuHxOvPWPAQY7uhip7l4UHTnNgrNbGa3prSFVRX6Z2l00RWApjeSM`
-// );
+const stripePromise = loadStripe(
+  `pk_test_hOKUPTlPFPzr45HYhwaGSQvz00gGujdnqc`
+);
 
 
 export default function Page() {
