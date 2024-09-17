@@ -7,7 +7,7 @@ import { useCreateStripeSessionMutation } from '../../redux/features/stripeApiSl
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(`pk_test_hOKUPTlPFPzr45HYhwaGSQvz00gGujdnqc`);
 
 export default function CheckoutButton({ priceId, price, interval, name }) {
   const router = useRouter();
