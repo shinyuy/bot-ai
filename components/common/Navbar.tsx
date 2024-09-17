@@ -28,6 +28,12 @@ export default function Navbar() {
 
   const authLinks = (isMobile: boolean) => (
     <>
+      <NavLink isSelected={isSelected('/features')} isMobile={isMobile} href="/features">
+        Features
+      </NavLink>
+      <NavLink isSelected={isSelected('/pricing')} isMobile={isMobile} href="/pricing">
+        Pricing
+      </NavLink>
       <NavLink isSelected={isSelected('/dashboard')} isMobile={isMobile} href="/dashboard">
         Dashboard
       </NavLink>
@@ -39,10 +45,10 @@ export default function Navbar() {
 
   const guestLinks = (isMobile: boolean) => (
     <>
-      <NavLink isSelected={isSelected('/auth/login')} isMobile={isMobile} href="/features">
+      <NavLink isSelected={isSelected('/features')} isMobile={isMobile} href="/features">
         Features
       </NavLink>
-      <NavLink isSelected={isSelected('/auth/login')} isMobile={isMobile} href="/pricing">
+      <NavLink isSelected={isSelected('/pricing')} isMobile={isMobile} href="/pricing">
         Pricing
       </NavLink>
       <NavLink isSelected={isSelected('/auth/login')} isMobile={isMobile} href="/auth/login">

@@ -1,14 +1,26 @@
-import Link from 'next/link';
+'use client'
 import type { Metadata } from 'next';
 import { Navbar } from '../../components/common';
-import Image from 'next/image';
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutButton from "../../components/common/CheckoutButton"
+import { useState } from 'react';
 
-export const metadata: Metadata = {
-  title: 'Bot AI',
-  description: 'Bot AI home page',
-};
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+
+
+// export const metadata: Metadata = {
+//   title: 'Bot AI',
+//   description: 'Bot AI pricing page',
+// };
+
+
+// const stripePromise = loadStripe(
+//   `pk_live_51KypobBlahmOGMaPGpupV2rrHqjVgulwwtPARoA64BZAqTuHxOvPWPAQY7uhip7l4UHTnNgrNbGa3prSFVRX6Z2l00RWApjeSM`
+// );
+
 
 export default function Page() {
+  const [interval, setInterval] = useState('month')
   return (
     <>
       <Navbar />
@@ -37,9 +49,7 @@ export default function Page() {
                 <li>❌ WhatsApp, Messenger, and Instagram integration</li>
               </ul>
 
-              <button className="rounded-full bg-black bg-sky-500 px-8 py-2 text-white mt-16 hover:bg-sky-600 transition duration-200">
-                Get Started
-              </button>
+              <CheckoutButton priceId="prod_QriSJUgtLXXiFl" price={900} interval={interval} name="AI Chatbot Basic Plan Subscription" />
             </div>
 
             {/* Pro Plan */}
@@ -61,9 +71,7 @@ export default function Page() {
                 <li>❌ Database integration</li>
               </ul>
 
-              <button className="rounded-full bg-black bg-sky-500 px-8 py-2 text-white mt-16 hover:bg-sky-600 transition duration-200">
-                Get Started
-              </button>
+              <CheckoutButton priceId="prod_QriTAqPYEUA0oy" price={2900} interval={interval} name="AI Chatbot Pro Plan Subscription" />
             </div>
 
             {/* Enterprise Plan */}
@@ -86,9 +94,7 @@ export default function Page() {
               </ul>
 
 
-              <button className="rounded-full bg-black bg-sky-500 px-8 py-2 text-white mt-16 hover:bg-sky-600 transition duration-200">
-                Get Started
-              </button>
+              <CheckoutButton priceId="prod_QriVo5uXvFIcU6" price={5900} interval={interval} name="AI Chatbot Enterprise Plan Subscription" />
             </div>
           </div>
         </div>
