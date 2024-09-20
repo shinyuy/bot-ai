@@ -6,7 +6,7 @@ const chatbotApiSlice = apiSlice.injectEndpoints({
             query: (chatbot) => {
                 console.log(chatbot)
                 return {
-                    url: '/chatbot',
+                    url: '/chatbots',
                     method: 'POST',
                     body: JSON.stringify({
                         ...chatbot

@@ -163,6 +163,46 @@ export default function Page() {
 
 
 
+        {/* Video Demo Section */}
+        <section id="video-demo" className="py-16 py-32 px-4 md:px-12">
+          <div className=" mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                See Our AI Chatbot in Action!
+              </h2>
+              <p className="text-xl text-gray-600">
+                Watch the demo video below to understand how our platform works to transform customer engagement and automate support processes.
+              </p>
+            </div>
+
+            {/* Video Container */}
+            <div className="relative  overflow-hidden rounded-lg shadow-lg mx-auto">
+              <div className="video-wrapper">
+                {/* Replace this with your actual video link */}
+                <iframe
+                  width="100%"
+                  height="500"
+                  src="https://www.youtube.com/" // Replace with your actual video link
+                  title="AI Chatbot Demo Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="mt-10 text-center">
+              <Link href={"/auth/register"}>
+                <button className="md:mr-8 mt-8 w-72 rounded-full bg-sky-500 px-8 py-4 text-xl text-white">
+                  Get Started for Free
+                </button></Link>
+            </div>
+          </div>
+        </section>
+
+
+
         {/* Benefits Section */}
         <div className="py-32 px-4 md:px-12 bg-gray-50">
           <h2 className="text-4xl font-bold text-center text-gray-800">Why Choose Our AI Chatbot?</h2>
