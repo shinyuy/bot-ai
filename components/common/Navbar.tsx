@@ -7,6 +7,7 @@ import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { useLogoutMutation } from '../../redux/features/authApiSlice';
 import { logout as setLogout } from '../../redux/features/authSlice';
 import { NavLink } from '../../components/common';
+import Image from 'next/image'
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -81,7 +82,14 @@ export default function Navbar() {
               <div className="flex flex-1 bg-gray-800 items-center justify-center sm:items-center sm:justify-between">
                 <div className="flex flex-shrink-0 items-center">
                   <NavLink href="/" isBanner>
-                    Bot AI
+                    <Image
+                      src="/logo3.png"  // Placeholder image path
+                      alt="Instagram Integration"
+                      //layout="fill"
+                      objectFit="contain"
+                      width={120}
+                      height={120}
+                    />
                   </NavLink>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">

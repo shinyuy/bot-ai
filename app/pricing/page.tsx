@@ -15,7 +15,7 @@ import { useState } from 'react';
 
 
 const stripePromise = loadStripe(
-  `pk_test_hOKUPTlPFPzr45HYhwaGSQvz00gGujdnqc`
+  `pk_test_51Q3oNJBIOcLjArM10AFEnbxsae4OCMOsfh1pAMGFjBBFDE8Hnbo27p32OmdsXswxRneled5RWC1BwEYNWhdclMmD00G4LFeq3g`
 );
 
 
