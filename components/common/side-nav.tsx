@@ -12,6 +12,7 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { SIDENAV_ITEMS } from '../../constants';
 import { SideNavItem } from '../../types';
 import { Icon } from '@iconify/react';
+import Image from 'next/image';
 
 const SideNav = () => {
   const dispatch = useAppDispatch();
@@ -27,17 +28,25 @@ const SideNav = () => {
   };
 
   return (
-    <div className="fixed flex hidden h-screen flex-1 flex-col justify-between border-r border-zinc-200 bg-white pb-6 md:flex md:w-60">
-      <div className="flex w-full flex-col space-y-6">
+    <div className="fixed flex hidden h-screen flex-1 flex-col justify-between border-r border-zinc-200 bg-white pb-2 md:flex md:w-60">
+      <div className="flex w-full  flex-col space-y-6">
         <Link
           href="/"
           className="flex h-12 w-full flex-row items-center justify-center space-x-3 border-b border-zinc-200 md:justify-start md:px-6"
         >
-          <span className="h-7 w-7 rounded-lg bg-zinc-300" />
-          <span className="hidden text-xl font-bold text-black md:flex">Bot AI</span>
+          {/* <span className="h-7 w-7 rounded-lg bg-zinc-300" /> */}
+          <Image
+            src="/logo.png"  // Placeholder image path
+            alt="Instagram Integration"
+            //layout="fill"
+            objectFit="contain"
+            width={50}
+            height={50}
+          />
+          <span className="hidden text-xl font-bold text-black md:flex">Contexx AI</span>
         </Link>
 
-        <div className="flex flex-col space-y-2 md:px-6">
+        <div className="flex flex-col md:px-6">
           {SIDENAV_ITEMS.map((item, idx) => {
             return <MenuItem key={idx} item={item} />;
           })}
@@ -88,7 +97,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
           // className={`flex flex-row items-center space-x-4 rounded-lg p-2 text-black ${item.path === pathname ? 'bg-zinc-100' : ''
           //   }`}
 
-          className={`flex items-center text-gray-800 mb-4 p-2 cursor-pointer rounded-lg ${item.path === pathname ? 'bg-gray-100' : 'hover:bg-gray-100'
+          className={`flex items-center text-gray-800  xl:mb-2 lg:mb-0 md:mb-0 p-2 cursor-pointer rounded-lg ${item.path === pathname ? 'bg-gray-100' : 'hover:bg-gray-100'
             }`}
         >
           {item.icon}

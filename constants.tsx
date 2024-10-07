@@ -46,11 +46,11 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     path: '/dashboard/analytics',
     icon: <MdOutlineAnalytics className="text-2xl mr-3" />,
   },
-  {
-    title: 'Calls',
-    path: '/dashboard/calls',
-    icon: <MdOutlineAnalytics className="text-2xl mr-3" />,
-  },
+  // {
+  //   title: 'Calls',
+  //   path: '/dashboard/calls',
+  //   icon: <MdOutlineAnalytics className="text-2xl mr-3" />,
+  // },
   {
     title: 'Settings',
     path: '/dashboard/settings',
