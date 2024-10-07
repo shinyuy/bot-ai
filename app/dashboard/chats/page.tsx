@@ -4,7 +4,6 @@ import { useRetrieveChatsQuery } from '../../../redux/features/chatsApiSlice';
 import { useRetrieveCompaniesQuery } from '../../../redux/features/companyApiSlice';
 import { List, Spinner } from '../../../components/common';
 import { useEffect } from 'react';
-import Link from 'next/link';
 
 export default function Page() {
     const { data: companies } = useRetrieveCompaniesQuery('');

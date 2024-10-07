@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
 import { useSearchParams } from 'next/navigation'
 import { Footer, Navbar } from '../../components/common';
 
@@ -14,7 +13,6 @@ export default function Page() {
 
     useEffect(() => {
         if (session_id) {
-            // You can make an API call to your backend to confirm the subscription status using session_id
             console.log("Stripe session ID:", session_id);
         }
     }, [session_id]);

@@ -1,4 +1,3 @@
-// pages/dashboard/account-settings.js
 'use client';
 
 import React from 'react';

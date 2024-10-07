@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Navbar } from '../../components/common';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Contexx AI',

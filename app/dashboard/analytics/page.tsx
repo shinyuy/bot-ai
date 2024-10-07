@@ -1,4 +1,3 @@
-// AnalyticsPage.js
 import React from 'react';
 
 const AnalyticsPage = () => {

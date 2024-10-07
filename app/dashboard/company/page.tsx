@@ -30,8 +30,6 @@ function getStepContent(step: number, setActiveStep) {
 }
 
 export default function Page() {
-  const [company, setCompany] = useState({});
-  const [done, setDone] = useState(false);
   const { name, website, isLoading, onChange, onSubmit } = useAddCompany();
   const [activeStep, setActiveStep] = useState(1);
   const [erroredInputName, setErroredInputName] = useState('');
@@ -55,13 +53,6 @@ export default function Page() {
     );
   }
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const imagesHandler = (files) => {
-    //setAppartment({ ...appartment, images });
-  };
 
   return (
     <div>

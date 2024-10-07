@@ -1,5 +1,4 @@
 "use client"
-// pages/dashboard/manage-chatbots.js
 import React, { useState } from 'react';
 import { FaEdit, FaEye, FaTrash, FaPlus } from 'react-icons/fa';
 import StepperIndicator from '../../../components/forms/StepperIndicator';

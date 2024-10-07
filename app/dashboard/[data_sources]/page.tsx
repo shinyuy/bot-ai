@@ -53,18 +53,7 @@ export default function Page() {
         );
     }
 
-    // const handleNext = async () => {
-    //     // const isStepValid = await trigger(undefined, { shouldFocus: true });
-    //     if (isStepValid) setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    // };
 
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-
-    const imagesHandler = (files) => {
-        //setAppartment({ ...appartment, images });
-    };
 
     return (
         <div>
@@ -72,7 +61,7 @@ export default function Page() {
                 <h1 className="text-4xl font-bold text-gray-800">Manage Data Sources</h1>
                 <p className="text-xl text-gray-600 mt-2">Connect and manage data sources for your chatbots.</p>
 
-                {/* Add New Data Source Button */}
+
                 <button onClick={() => setCreate(!create)} className="bg-gray-800 mt-8 text-white py-2 px-6 rounded-lg hover:bg-gray-900 flex items-center space-x-2">
                     <FaPlus />
                     <span>Add New Data Source</span>

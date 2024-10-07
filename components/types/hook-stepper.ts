@@ -5,10 +5,10 @@ export type StepperFormKeysType =
 
 export type StepperFormValues = {
   [FieldName in StepperFormKeysType]: FieldName extends
-    | 'annualIncome'
-    | 'loanAmount'
-    | 'repaymentTerms'
-    | 'creditScore'
+    | 'CompanyInfo'
+    | 'FileUpload'
+    | 'Chatbot'
+    | 'Success'
     ? number
     : string;
 };
