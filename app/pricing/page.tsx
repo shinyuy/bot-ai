@@ -9,8 +9,8 @@ import { useState } from 'react';
 
 
 // export const metadata: Metadata = {
-//   title: 'Bot AI',
-//   description: 'Bot AI pricing page',
+//   title: 'Contexx AI',
+//   description: 'Contexx AI pricing page',
 // };
 
 

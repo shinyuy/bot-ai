@@ -4,8 +4,8 @@ import { Navbar } from '../../components/common';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Bot AI',
-  description: 'Bot AI home page',
+  title: 'Contexx AI',
+  description: 'Contexx AI home page',
 };
 
 export default function Page() {

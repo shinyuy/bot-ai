@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Navbar } from '../../components/common';
 
 export const metadata: Metadata = {
-  title: 'Bot AI | Password Reset',
+  title: 'Contexx AI | Password Reset',
   description: '',
 };
 

@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { Navbar } from '../../../components/common';
 
 export const metadata: Metadata = {
-  title: 'Bot AI | Register',
+  title: 'Contexx AI | Register',
   description: '',
 };
 
