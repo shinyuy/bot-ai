@@ -178,16 +178,6 @@ export default function Page() {
             {/* Video Container */}
             <div className="relative flex justify-center  overflow-hidden rounded-lg shadow-lg mx-auto">
 
-              {/* Replace this with your actual video link */}
-              {/* <iframe
-                  width="100%"
-                  height="500"
-                  src="" // Replace with your actual video link
-                  title="AI Chatbot Demo Video"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe> */}
               <video autoPlay width="auto" height="auto" controls>
                 <source src="contexxai.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
