@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Spinner } from '../common';
 import { useAddChatbotMutation } from '../../redux/features/chatbotApiSlice';
 import { toast } from 'react-toastify';
+import ColorPicker from '../common/ColorPicker';
 
 const Chatbot = ({ setActiveStep }: { setActiveStep }) => {
     const [addChatbot, { /*isLoading*/ }] = useAddChatbotMutation();
@@ -36,6 +37,14 @@ const Chatbot = ({ setActiveStep }: { setActiveStep }) => {
                 toast.error('Failed to upload file');
             });
     }
+
+    const [primaryColor, setPrimaryColor] = useState('#3498db');
+
+    const handleColorChange = (newColor) => {
+        setPrimaryColor(newColor);
+        // You can send this color to your server or update a chatbot preview
+        // For example, store it in a database to apply to the chatbot UI
+    };
 
     return (
         <div className="flex min-h-80 w-full flex-col items-center">
@@ -76,7 +85,7 @@ const Chatbot = ({ setActiveStep }: { setActiveStep }) => {
                         )}
                     </select> </div>
 
-                <div>
+                {/* <div>
                     {"Chabot Public"}{" "}<br />
                     <div className="toggle-switch mb-8">
                         <input
@@ -92,6 +101,28 @@ const Chatbot = ({ setActiveStep }: { setActiveStep }) => {
                             <span className="switch" />
                         </label>
                     </div>
+                </div> */}
+
+                <div>
+                    <h1>Customize Your Chatbot</h1>
+                    <p>Select your preferred color for the chatbot</p>
+                    <div className='flex py-4'>
+                        <ColorPicker onColorChange={handleColorChange} />
+
+                        {/* Chatbot preview area */}
+                        <div
+                            style={{
+                                backgroundColor: primaryColor,
+                                padding: '20px',
+                                borderRadius: '5px',
+                                margin: '20px',
+                            }}
+                        >
+                            <h2 className='text-white'>Chatbot Preview</h2>
+                            <p className='text-white'>This will be the main color or your chatbot!</p>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div>

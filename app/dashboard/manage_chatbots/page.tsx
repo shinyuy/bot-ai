@@ -28,15 +28,15 @@ function getStepContent(step: number, setActiveStep) {
 
 const ManageChatbots = () => {
     const [showModal, setShowModal] = useState(false);
-    const [create, setCreate] = useState(false)
-    const [activeStep, setActiveStep] = useState(3);
+    const [create, setCreate] = useState(true)
+    const [activeStep, setActiveStep] = useState(4);
     const { data: chatbots, isFetching } = useRetrieveChatbotsQuery('');
     const [seeDetails, setSeeDetails] = useState(false)
 
     const handleModalToggle = () => setShowModal(!showModal);
 
     return (
-        <div className="bg-gray-100 min-h-screen p-8">
+        <div className=" min-h-screen p-4">
             {!create && <> <h1 className="text-4xl font-bold text-gray-800">Manage Your Chatbots</h1>
                 <p className="text-xl text-gray-600 mt-2">Create, edit, or delete your chatbots with ease.</p></>}
 

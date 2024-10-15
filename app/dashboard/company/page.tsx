@@ -57,7 +57,7 @@ export default function Page() {
   return (
     <div>
       {!create &&
-        <div className="bg-gray-100 min-h-screen p-8">
+        <div className=" min-h-screen p-8">
           <h1 className="text-4xl font-bold text-gray-800">Manage Companies</h1>
           <p className="text-xl text-gray-600 mt-2">Easily manage chatbots for different companies or businesses.</p>
 

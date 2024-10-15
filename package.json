@@ -38,6 +38,7 @@
     "next": "14.2.5",
     "postcss": "8.4.41",
     "react": "18.3.1",
+    "react-color": "^2.19.3",
     "react-dom": "18.3.1",
     "react-dropzone": "^4.2.12",
     "react-hook-form": "^7.51.5",

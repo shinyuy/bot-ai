@@ -57,7 +57,7 @@ export default function Page() {
 
     return (
         <div>
-            {!create && <div className="bg-gray-100 min-h-screen p-8">
+            {!create && <div className=" min-h-screen p-8">
                 <h1 className="text-4xl font-bold text-gray-800">Manage Data Sources</h1>
                 <p className="text-xl text-gray-600 mt-2">Connect and manage data sources for your chatbots.</p>
 
