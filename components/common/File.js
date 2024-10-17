@@ -144,7 +144,7 @@ export default function File(props) {
           <div
             className="wrap"
             style={{
-              background: `url(${item.url}) no-repeat`,
+              background: `url(${item.logo}) no-repeat`,
               minWidth: '250px',
               width: isMobile ? '80vw' : 'auto',
               height: '250px',
@@ -186,7 +186,7 @@ export default function File(props) {
         style={{
           display: 'flex',
           padding: '20px',
-          marginTop: '50px',
+          marginTop: '10px',
           height: isMobile ? '600px' : '300px',
           border: '2px dotted black',
           width: isMobile ? '90vw' : 'auto',
@@ -212,8 +212,8 @@ export default function File(props) {
                   alignItems: 'center',
                 }}
               >
-                {/* {showUploadedImages(isMobile)} */}
-                <p className="text-3xl">{props.fileState.name}</p>{' '}
+                {showUploadedImages(isMobile)}
+                {props.fileState.pdf && <p className="text-3xl">{props.fileState.name}</p>}
                 <p
                   onClick={() => props.setFileState({ ...props.fileState, name: '' })}
                   className="cursor-pointer pl-16 text-xs font-bold text-red-900"

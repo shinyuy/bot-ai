@@ -2,7 +2,7 @@ import { useRetrieveChatbotDetailsQuery } from '../../redux/features/chatbotApiS
 import Spinner from './Spinner';
 
 export default function ChabotDetails({ data_source_id, company_id }) {
-    const { data: chatbotDetails, isLoading, isFetching } = useRetrieveChatbotDetailsQuery({ data_source_id, company_id });
+    const { data: chatbotDetails, isLoading, isFetching } = useRetrieveChatbotDetailsQuery({ data_source_id });
 
 
     if (isLoading || isFetching) {
@@ -17,14 +17,12 @@ export default function ChabotDetails({ data_source_id, company_id }) {
         <div>
             <div>Data source:{chatbotDetails?.data_source.map((d, i) => {
                 return (
-                    <p>{d.name}</p>
+                    <>
+                        <p>{d.name}</p>
+                        <p>CDN Link : <br /> {d.chatbot_url}</p> </>
                 )
             })} </div>
-            <div>Data source:{chatbotDetails?.company.map((c, i) => {
-                return (
-                    <p>{c.name}</p>
-                )
-            })} </div>
+
         </div>
     );
 }

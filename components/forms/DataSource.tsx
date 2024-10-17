@@ -2,25 +2,21 @@
 import { useState } from 'react';
 
 import File from '../common/File';
-import { useRetrieveCompaniesQuery } from '../../redux/features/companyApiSlice';
 import { Spinner } from '../common';
 import { useFileMutation } from '../../redux/features/fileApiSlice';
 import { useSearchParams } from 'next/navigation';
 import pdfToText from 'react-pdftotext';
 import { toast } from 'react-toastify';
 // import { useAppDispatch } from '@/redux/hooks';
-import CheckBox from './Checkbox';
 import { useRouter } from 'next/navigation';
 
 
-const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
+const FileUpload = ({ setActiveStep, chatbot, setChatbot }: { setActiveStep, chatbot, setChatbot }) => {
     const router = useRouter();
     // const dispatch = useAppDispatch();
-    const { data: companies, isLoading, isFetching } = useRetrieveCompaniesQuery('');
-    const [file, { /*isLoading*/ }] = useFileMutation();
+    const [file, { isLoading }] = useFileMutation();
     const searchParams = useSearchParams();
     const [website, setWebsite] = useState(searchParams.get('website'))
-    const [id, setId] = useState(searchParams.get('company_id'))
     const [checked, setChecked] = useState("File/PDF");
     const [websiteURL, setWebsiteURL] = useState("")
 
@@ -32,7 +28,8 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
         error: '',
         width: null,
         name: '',
-        textContent: ''
+        textContent: '',
+        pdf: false
     });
 
     const ext = (f) => f.split('.').pop();
@@ -48,35 +45,31 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
 
         if (pdf && ext(pdf.name) === 'pdf') {
             if (files[0].size > 5000000) {
-                setFileState({ ...fileState, error: 'Image size must not exceed 500000 MB' });
+                setFileState({ ...fileState, error: 'File size must not exceed 500000 MB' });
             } else {
                 let formData = new FormData();
 
                 formData.append('file', files[0]);
                 const pdfText = await pdfToText(pdf);
-                setFileState({ ...fileState, name: pdf.name, textContent: pdfText })
-                if (!website) {
-                    setWebsite(companies[0].website)
-                    setId(companies[0].id)
-                }
+                setFileState({
+                    ...fileState, uploading: false,
+                    uploadedFiles: [{ logo: '/pdf.png' }], name: pdf.name, textContent: pdfText, pdf: true
+                })
 
             }
         }
     }
 
     const handleSubmit = async () => {
-        if (!website) {
-            setFileState({ ...fileState, error: "Select/Add company to associate data with" })
-            return
-        }
         setFileState({ ...fileState, error: '', uploading: true });
-        await file({ pdfText: fileState.textContent, name: fileState.name, website, id })
+        await file({ pdfText: fileState.textContent, name: fileState.name, website })
             .unwrap()
-            .then(() => {
-                //dispatch(setAuth());
+            .then((data) => {
+                console.log(data)
                 toast.success('File upload');
-                router.push('/dashboard/manage_chatbots');
-                // setActiveStep(3)
+                setChatbot({ ...chatbot, nameOfDataSource: data.name, data: data.name, data_source: data.id })
+
+                setActiveStep(3)
             })
             .catch(() => {
                 toast.error('Failed to upload file');
@@ -94,21 +87,13 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
         let data = await res.text()
         console.log(data)
 
-        if (!website) {
-            setWebsite(companies[0].website)
-            setId(companies[0].id)
-        }
-        if (!website) {
-            setFileState({ ...fileState, error: "Select/Add company to associate data with" })
-            return
-        }
-        await file({ pdfText: data, name: websiteURL, website, id })
+        await file({ pdfText: data, name: websiteURL, website })
             .unwrap()
-            .then(() => {
-                //dispatch(setAuth());
+            .then((data) => {
+                console.log(data)
                 toast.success('File upload');
-                router.push('/dashboard/manage_chatbots');
-                // setActiveStep(3)
+                setChatbot({ ...chatbot, nameOfDataSource: data.name, data: data.name, data_source: data.id })
+                setActiveStep(3)
             })
             .catch(() => {
                 toast.error('Failed to upload file');
@@ -122,30 +107,47 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
 
     return (
         <div className="flex min-h-80 w-full flex-col items-center">
-            <h4 className="stepper_step_heading my-8">File Upload</h4>
+            <h4 className="stepper_step_heading my-8">Data Source</h4>
             <div className="w-1/2">
-                <div>
-                    <label className='' htmlFor="company">Company to associate data with</label>
-
-                    <select onChange={e => { setWebsite(e.target.value.split(" ")[0]); setId(e.target.value.split(" ")[1]) }} className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        name="company" id="company">
-                        {companies?.map((com, i) =>
-                            <option key={i} value={com.website + " " + com.id}>{com.name}</option>
-                        )}
-                    </select> </div>
                 <div className='my-16'>
                     <p className="mb-8">
                         Select the type of data sources your chatbot will be using to answer questions
                     </p>
                     <div className="flex justify-between w-full">
-                        <CheckBox label="File/PDF" value="File/PDF" checked={checked} check={() => setChecked("File/PDF")} />
-                        <CheckBox label="Website" value="Website" checked={checked} check={() => setChecked("Website")} />
-                        <CheckBox label="Database" value="Database" checked={checked} check={() => setChecked("Database")} />
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={checked === "File/PDF"}
+                                onChange={() => setChecked("File/PDF")}
+                            />{' '}
+                            File/PDF
+                        </label>
+                        <br />
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={checked === "Website"}
+                                onChange={() => setChecked("Website")}
+                            />{' '}
+                            Website
+                        </label>
+                        <br />
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={checked === "Database"}
+                                onChange={() => setChecked("Database")}
+                            />{' '}
+                            Database
+                        </label>
                     </div>
                 </div>
 
                 {checked === "File/PDF" &&
                     <>
+                        <p className="mb-4">
+                            Add data source
+                        </p>
                         {fileState.error && <p className='text-red-900'>{fileState.error}</p>}
                         <div className="mb-8 w-full">
                             <File
@@ -162,7 +164,7 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
                                 setFileState={setFileState}
                             />
                         </div>
-                        <div>
+                        {fileState.textContent && <div>
                             <button
                                 type="button"
                                 onClick={handleSubmit}
@@ -171,7 +173,7 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
                             >
                                 {isLoading || fileState.uploading ? <Spinner sm /> : `Upload`}
                             </button>
-                        </div>
+                        </div>}
                     </>}
 
                 {
@@ -191,10 +193,10 @@ const FileUpload = ({ setActiveStep }: { setActiveStep }) => {
                             <button
                                 type="button"
                                 onClick={scrape}
-                                className="flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                                 disabled={isLoading}
                             >
-                                {isLoading || fileState.uploading ? <Spinner sm /> : `Scrape Website`}
+                                {isLoading || fileState.uploading ? <Spinner sm /> : `Scrape`}
                             </button>
                         </div>
                     </>

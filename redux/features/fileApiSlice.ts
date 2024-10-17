@@ -11,7 +11,7 @@ const fileApiSlice = apiSlice.injectEndpoints({
             pdf_text: pdfText,
             name: name,
             company_website: website,
-            id: id
+            // id: id
           }),
           headers: {
             Accept: 'application/json',
@@ -22,7 +22,23 @@ const fileApiSlice = apiSlice.injectEndpoints({
         }; 
       },
     }),
+    fileUpload: builder.mutation({
+      query: ({ formData}) => {
+      
+        return {
+          url: '/logo/upload',
+          method: 'POST',
+          body: formData,
+          // headers: {
+          //   Accept: 'application/json',
+          //   'Content-Type': 'application/json',
+          //   //"content-Type": 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+          //   // 'Content-Type': 'application/x-www-form-urlencoded',
+          // },
+        }; 
+      },
+    }),
   }),
 });
 
-export const { useFileMutation } = fileApiSlice;
+export const { useFileMutation, useFileUploadMutation } = fileApiSlice;

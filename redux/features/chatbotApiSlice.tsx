@@ -4,7 +4,6 @@ const chatbotApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         addChatbot: builder.mutation({
             query: (chatbot) => {
-                console.log(chatbot)
                 return {
                     url: '/chatbots',
                     method: 'POST',
@@ -28,10 +27,9 @@ const chatbotApiSlice = apiSlice.injectEndpoints({
         }),
         retrieveChatbotDetails: builder.query({
             query: ({ data_source_id, company_id }) => {
-                console.log(data_source_id)
-                console.log(company_id)
+
                 return ({
-                    url: `/chatbots/details/?data_source_id=${data_source_id}&company_id=${company_id}`,
+                    url: `/chatbots/details/?data_source_id=${data_source_id}`,
                     method: 'GET',
                 })
             },

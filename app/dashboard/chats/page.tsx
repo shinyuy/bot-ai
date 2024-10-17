@@ -1,13 +1,11 @@
 'use client';
 
 import { useRetrieveChatsQuery } from '../../../redux/features/chatsApiSlice';
-import { useRetrieveCompaniesQuery } from '../../../redux/features/companyApiSlice';
 import { List, Spinner } from '../../../components/common';
 import { useEffect } from 'react';
 
 export default function Page() {
-    const { data: companies } = useRetrieveCompaniesQuery('');
-    const { data: chats, isLoading, isFetching } = useRetrieveChatsQuery({ company_id: companies && companies[0]?.id });
+    const { data: chats, isLoading, isFetching } = useRetrieveChatsQuery({});
 
     useEffect(() => {
 

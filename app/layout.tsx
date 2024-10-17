@@ -18,11 +18,17 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
+  useEffect(() => {
+    const iframe = document.getElementById('chatbot-ui');
+    console.log(iframe)
+  }, [])
+
 
   return (
     <html lang="en" >
       <head>
-        <link rel="stylesheet" href="https://f005.backblazeb2.com/file/contexx/style.css" />
+        <link rel="stylesheet" href="http://127.0.0.1:5500/bot/style.css" />
+
         <title>Contexx AI</title>
       </head>
       <body className={inter.className}>
@@ -38,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         </Provider>
 
-        <iframe id='chatbot-ui' src="https://f005.backblazeb2.com/file/contexx/index.html"
+        <iframe id='chatbot-ui' src="http://127.0.0.1:5500/bot/index.html"
         ></iframe>
       </body>
     </html>

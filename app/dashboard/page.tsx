@@ -53,7 +53,7 @@ export default function Page() {
           </div>
         </div>
 
-        <Link href="/dashboard/company">
+        <Link href="/dashboard/manage_chatbots">
           <button
             className="bg-gray-800 text-white mt-12 py-2 px-6 rounded-lg hover:bg-gray-900 flex items-center space-x-2"
           // onClick={() => setCreate(!create)}

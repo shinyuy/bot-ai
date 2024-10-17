@@ -17,9 +17,9 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <AiOutlineDashboard className="text-2xl mr-3" />,
   },
   {
-    title: 'Company',
-    path: '/dashboard/company',
-    icon: <FaRegBuilding className="text-2xl mr-3" />,
+    title: 'Chatbots',
+    path: '/dashboard/manage_chatbots',
+    icon: <TbMessageChatbot className="text-2xl mr-3" />,
   },
   {
     title: 'Data Sources',
@@ -30,11 +30,6 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     title: 'Chats History',
     path: '/dashboard/chats',
     icon: <RiChatHistoryLine className="text-2xl mr-3" />,
-  },
-  {
-    title: 'Chatbots',
-    path: '/dashboard/manage_chatbots',
-    icon: <TbMessageChatbot className="text-2xl mr-3" />,
   },
   {
     title: 'WhatsApp',

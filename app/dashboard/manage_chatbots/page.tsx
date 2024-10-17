@@ -2,38 +2,91 @@
 import React, { useState } from 'react';
 import { FaEdit, FaEye, FaTrash, FaPlus } from 'react-icons/fa';
 import StepperIndicator from '../../../components/forms/StepperIndicator';
-import CompanyInfo from '../../../components/forms/CompanyInfo';
-import Chatbot from '../../../components/forms/Chatbot';
-import FileUpload from '../../../components/forms/File';
+import Chatbot from '../../../components/forms/ChatbotDetails';
+import FileUpload from '../../../components/forms/DataSource';
 import Success from '../../../components/forms/Success';
 import { IoCloseOutline } from "react-icons/io5";
 import { useRetrieveChatbotsQuery } from '../../../redux/features/chatbotApiSlice';
 import ChabotDetails from '../../../components/common/ChatbotDetails';
+import ChatbotAppearance from '../../../components/forms/ChatbotAppearance';
+import { useAddChatbotMutation } from '../../../redux/features/chatbotApiSlice';
+import { toast } from 'react-toastify';
 
-function getStepContent(step: number, setActiveStep) {
+
+function getStepContent(step: number, setActiveStep, chatbot, setChatbot, submit, cdn) {
     switch (step) {
         case 1:
-            return <CompanyInfo />;
+            return <Chatbot setActiveStep={setActiveStep} chatbot={chatbot} setChatbot={setChatbot} />;
         case 2:
-            return <FileUpload setActiveStep={setActiveStep} />;
+            return <FileUpload setActiveStep={setActiveStep} chatbot={chatbot} setChatbot={setChatbot} />;
         case 3:
-            return <Chatbot setActiveStep={setActiveStep} />;
+            return <ChatbotAppearance setActiveStep={setActiveStep} chatbot={chatbot} setChatbot={setChatbot} submit={submit} />;
         case 4:
-            return <Success />;
-        case 5:
+            return <Success cdn={cdn} />;
         default:
             return 'Unknown step';
     }
 }
 
 const ManageChatbots = () => {
+    const [addChatbot, { /*isLoading*/ }] = useAddChatbotMutation();
     const [showModal, setShowModal] = useState(false);
-    const [create, setCreate] = useState(true)
-    const [activeStep, setActiveStep] = useState(4);
+    const [create, setCreate] = useState(false)
+    const [activeStep, setActiveStep] = useState(1);
     const { data: chatbots, isFetching } = useRetrieveChatbotsQuery('');
     const [seeDetails, setSeeDetails] = useState(false)
+    const [chatbot, setChatbot] = useState({
+        name: "",
+        logo: "",
+        chatbot_public: true,
+        nameOfDataSource: "",
+        data: "",
+        primaryColor: '#3498db',
+        welcomeMessage: "",
+        placeholderText: "",
+        hideBranding: false,
+        data_source: '',
+    })
+    const [isLoading, setIsLoading] = useState(false)
+    const [cdn, setCdn] = useState("")
 
     const handleModalToggle = () => setShowModal(!showModal);
+
+    const isStepValid = () => {
+        if (activeStep === 1 && chatbot.name /*&& chatbot.logo */) return true;
+        if (activeStep === 2 && chatbot.nameOfDataSource && chatbot.data) return true;
+        if (activeStep === 3) return true;
+
+        return false;
+    };
+
+    const handleNext = () => {
+        if (isStepValid()) {
+            setActiveStep(activeStep + 1);
+        } else {
+            alert("Please fill out the required fields");
+        }
+    };
+
+    const submit = async (e) => {
+        e.preventDefault()
+        setIsLoading(true)
+        await addChatbot({ ...chatbot, logo_url: chatbot.logo, primary_color: chatbot.primaryColor, data_source: chatbot.data_source })
+            .unwrap()
+            .then((data) => {
+                //dispatch(setAuth());
+                setCdn(data.chatbot_url)
+                setIsLoading(false)
+                toast.success('Chatbot created');
+                setActiveStep(4)
+            })
+            .catch(() => {
+                setIsLoading(false)
+                toast.error('Failed to upload file');
+            });
+    }
+
+    console.log(chatbot)
 
     return (
         <div className=" min-h-screen p-4">
@@ -92,7 +145,25 @@ const ManageChatbots = () => {
                         <StepperIndicator activeStep={activeStep} />
 
                         <>
-                            {getStepContent(activeStep, setActiveStep)}
+                            {getStepContent(activeStep, setActiveStep, chatbot, setChatbot, submit, cdn)}
+                            <div className='flex justify-between mt-8 px-36'>
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveStep(activeStep - 1)}
+                                    className="flex w-24 justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    disabled={activeStep == 1}
+                                >
+                                    Previous
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={activeStep === 3 ? submit : handleNext}
+                                    className="flex w-24 justify-center rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    disabled={isLoading}
+                                >
+                                    {activeStep === 3 ? 'Submit' : 'Next'}
+                                </button>
+                            </div>
                         </>
                     </div>
                 </div>}
