@@ -21,11 +21,11 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     path: '/dashboard/manage_chatbots',
     icon: <TbMessageChatbot className="text-2xl mr-3" />,
   },
-  {
-    title: 'Data Sources',
-    path: '/dashboard/data_sources',
-    icon: <MdOutlineSource className="text-2xl mr-3" />,
-  },
+  // {
+  //   title: 'Data Sources',
+  //   path: '/dashboard/data_sources',
+  //   icon: <MdOutlineSource className="text-2xl mr-3" />,
+  // },
   {
     title: 'Chats History',
     path: '/dashboard/chats',
