@@ -43,10 +43,6 @@ const authApiSlice = apiSlice.injectEndpoints({
       query: ({ first_name, last_name, email, password, re_password }) => ({
         url: '/users/',
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          "Access-Control-Allow-Origin":"*"
-        },
         body: { first_name, last_name, email, password, re_password },
       }),
     }),
