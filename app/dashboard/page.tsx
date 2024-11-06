@@ -28,7 +28,7 @@ export default function Page() {
         <p className="text-xl text-gray-600 mt-2">Monitor your chatbot's performance at a glance.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-          {/* Total Chats */}
+
           <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4">
             <FaComments className="text-blue-600 text-3xl" />
             <h2 className="text-2xl font-bold text-gray-800">Total Chats</h2>
@@ -36,7 +36,6 @@ export default function Page() {
             <p className="text-gray-500">Chats handled by your chatbot</p>
           </div>
 
-          {/* Active Users */}
           <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4">
             <FaUserFriends className="text-green-600 text-3xl" />
             <h2 className="text-2xl font-bold text-gray-800">Chatbots</h2>
@@ -44,7 +43,6 @@ export default function Page() {
             <p className="text-gray-500">Your Chatbots</p>
           </div>
 
-          {/* Average Response Time */}
           <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-start space-y-4">
             <FaClock className="text-yellow-600 text-3xl" />
             <h2 className="text-2xl font-bold text-gray-800">Data Sources</h2>
