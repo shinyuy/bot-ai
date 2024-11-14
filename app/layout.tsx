@@ -3,10 +3,9 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import Provider from '../redux/provider';
-import { Footer, Navbar } from '../components/common';
+import { Footer } from '../components/common';
 import { Setup } from '../components/utils';
-import { useEffect, useState, Suspense } from 'react';
-import Script from 'next/script'
+import { useEffect, Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
