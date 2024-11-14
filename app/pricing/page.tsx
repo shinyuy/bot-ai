@@ -8,10 +8,10 @@ import { useState } from 'react';
 // const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 
-export const metadata: Metadata = {
-  title: 'Contexx AI',
-  description: 'Contexx AI pricing page',
-};
+// export const metadata: Metadata = {
+//   title: 'Contexx AI',
+//   description: 'Contexx AI pricing page',
+// };
 
 
 const stripePromise = loadStripe(
