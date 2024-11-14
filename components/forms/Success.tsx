@@ -7,11 +7,19 @@ const Success = ({ cdn }) => {
             <div className="flex h-[800px] w-full  justify-evenly">
                 <div className="flex w-1/2 flex-col">
                     <span className="text=sm text-gray-500">
-                        Copy the following link and script tags and add to the head of your main index.html file
+                        Copy the following link/script tags and add to the head of your main index.html file
                     </span>
 
                     <span className="my-8 h-32 w-full rounded border-2 text-black">
-                        {` <iframe id='chatbot-ui' src=${cdn}>
+                        {`<link rel="stylesheet" href=${cdn.css} />`}
+                    </span>
+
+
+                    <span className="text=sm text-gray-500">
+                        Copy the following iFrame and add to the body of your main index.html file
+                    </span>
+                    <span className="my-8 h-32 w-full rounded border-2 text-black">
+                        {` <iframe id='chatbot-ui' src=${cdn.html}>
                        </iframe>`}
                     </span>
 

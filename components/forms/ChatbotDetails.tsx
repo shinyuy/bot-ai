@@ -23,8 +23,8 @@ const Chatbot = ({ setActiveStep, chatbot, setChatbot }: { setActiveStep, chatbo
 
     const onDrop = async (files) => {
 
-        if (files[0].size > 5000) {
-            setFileState({ ...fileState, error: 'Image size must not exceed 5000 MB' });
+        if (files[0].size > 50000) {
+            setFileState({ ...fileState, error: 'Image size must not exceed 50 MB' });
         } else {
             setFileState({ ...fileState, error: '', uploading: true });
 

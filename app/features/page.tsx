@@ -3,7 +3,7 @@ import { Navbar } from '../../components/common';
 
 export const metadata: Metadata = {
   title: 'Contexx AI',
-  description: 'Contexx AI home page',
+  description: 'Contexx AI features page',
 };
 
 export default function Page() {

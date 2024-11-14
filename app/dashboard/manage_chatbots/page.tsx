@@ -48,7 +48,7 @@ const ManageChatbots = () => {
         data_source: '',
     })
     const [isLoading, setIsLoading] = useState(false)
-    const [cdn, setCdn] = useState("")
+    const [cdn, setCdn] = useState({ html: "", css: "" })
 
     const handleModalToggle = () => setShowModal(!showModal);
 
@@ -75,7 +75,7 @@ const ManageChatbots = () => {
             .unwrap()
             .then((data) => {
                 //dispatch(setAuth());
-                setCdn(data.chatbot_url)
+                setCdn({ html: data.chatbot_url, css: data.chatbot_css_url })
                 setIsLoading(false)
                 toast.success('Chatbot created');
                 setActiveStep(4)
