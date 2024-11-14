@@ -8,6 +8,7 @@ import { FaComments, FaPlus, FaUserFriends, FaClock } from 'react-icons/fa';
 
 export default function Page() {
   const { data: stats, isLoading, isFetching } = useRetrieveStatsQuery({});
+  console.log(stats)
 
   useEffect(() => {
 

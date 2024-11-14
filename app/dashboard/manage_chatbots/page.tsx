@@ -86,8 +86,6 @@ const ManageChatbots = () => {
             });
     }
 
-    console.log(chatbot)
-
     return (
         <div className=" min-h-screen p-4">
             {!create && <> <h1 className="text-4xl font-bold text-gray-800">Manage Your Chatbots</h1>

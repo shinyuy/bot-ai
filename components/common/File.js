@@ -93,7 +93,7 @@ export default function File(props) {
   const onRemove = (id) => {
     axios
       .post(
-        `http://localhost:8000/api/images/removeimage?public_id=${id}`,
+        `${NEXT_PUBLIC_HOST}/api/images/removeimage?public_id=${id}`,
         {},
         //formData,
         {

@@ -71,8 +71,8 @@ const FileUpload = ({ setActiveStep, chatbot, setChatbot }: { setActiveStep, cha
 
                 setActiveStep(3)
             })
-            .catch(() => {
-                toast.error('Failed to upload file');
+            .catch((e) => {
+                toast.error(`Failed to upload file ${e.data.error}`);
             });
     }
 
@@ -95,8 +95,8 @@ const FileUpload = ({ setActiveStep, chatbot, setChatbot }: { setActiveStep, cha
                 setChatbot({ ...chatbot, nameOfDataSource: data.name, data: data.name, data_source: data.id })
                 setActiveStep(3)
             })
-            .catch(() => {
-                toast.error('Failed to upload file');
+            .catch((e) => {
+                toast.error(`Failed to upload data ${e.data.error}`);
             });
 
     }

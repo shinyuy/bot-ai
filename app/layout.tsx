@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   useEffect(() => {
     const iframe = document.getElementById('chatbot-ui');
-    console.log(iframe)
+
   }, [])
 
 
