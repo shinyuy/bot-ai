@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Contexx AI',
-  description: 'Contexx AI home page',
+  description: 'Customizable AI chatbot SaaS solution enabling businesses to enhance customer interactions through data-driven, responsive chatbots. Integrates seamlessly with user-provided data sources for tailored responses, providing robust analytics, multi-channel support, and easy integration. Suitable for various industries looking to streamline customer support, automate inquiries, and improve user engagement.',
 };
 
 export default function Page() {
