@@ -1,9 +1,6 @@
 'use client'
 import type { Metadata } from 'next';
 import { Navbar } from '../../components/common';
-import { useState } from 'react';
-
-// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 
 // export const metadata: Metadata = {
