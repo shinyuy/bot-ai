@@ -6,7 +6,7 @@ import { Navbar } from '../../../components/common';
 
 export const metadata: Metadata = {
   title: 'Contexx AI | Register Page',
-  description: '',
+  description: 'Register page',
 };
 
 export default function Page() {
