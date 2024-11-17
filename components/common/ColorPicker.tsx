@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { SketchPicker } from 'react-color';
 
 const ColorPicker = ({ onColorChange }) => {
-    const [color, setColor] = useState('#1F2937'); // Default color
+    const [color, setColor] = useState('#1F2937');
 
     const handleChangeComplete = (color) => {
-        setColor(color.hex);  // Update the local state
-        onColorChange(color.hex);  // Pass the color to the parent component or server
+        setColor(color.hex);
+        onColorChange(color.hex);
     };
 
     return (
