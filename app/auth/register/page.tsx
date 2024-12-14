@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { RegisterForm } from '../../../components/forms';
 import { SocialButtons } from '../../../components/common';
 import type { Metadata } from 'next';
-import { Navbar } from '../../../components/common';
+import { Navbar, Footer } from '../../../components/common';
 
 export const metadata: Metadata = {
   title: 'Contexx AI | Register Page',
@@ -35,6 +35,8 @@ export default function Page() {
           </p>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

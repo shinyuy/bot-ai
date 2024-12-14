@@ -1,6 +1,6 @@
 'use client'
 import type { Metadata } from 'next';
-import { Navbar } from '../../components/common';
+import { Navbar, Footer } from '../../components/common';
 
 
 // export const metadata: Metadata = {
@@ -197,6 +197,8 @@ export default function Page() {
                         <li>By visiting this page on our website: <a href="https://contexxai.com/contact" rel="external nofollow noopener" target="_blank">https://contexxai.com/contact</a></li>
                     </ul>
                 </div>
+
+                <Footer />
             </main >
         </>
     )

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Navbar } from '../../components/common';
+import { Navbar, Footer } from '../../components/common';
 
 export const metadata: Metadata = {
   title: 'Contexx AI',
@@ -120,6 +120,8 @@ export default function Page() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }

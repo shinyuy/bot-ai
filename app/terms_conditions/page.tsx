@@ -1,6 +1,6 @@
 'use client'
 import type { Metadata } from 'next';
-import { Navbar } from '../../components/common';
+import { Navbar, Footer } from '../../components/common';
 
 
 // export const metadata: Metadata = {
@@ -109,6 +109,8 @@ export default function Page() {
                     </section>
                 </div>
             </main >
+
+            <Footer />
         </>
     )
 }

@@ -38,12 +38,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="">
               {children}
             </div>
-            <Footer />
           </Suspense>
 
         </Provider>
 
-        {/* <iframe id='chatbot-ui' src="https://f005.backblazeb2.com/file/contexx/Test_4d06e3f2-7e84-4473-98a8-b58ffe0c4ded_chatbot.html"> </iframe> */}
+        <iframe id='chatbot-ui' src={`${process.env.NEXT_PUBLIC_HOST}/api/static-files/index.html/`}> </iframe>
 
       </body>
     </html>

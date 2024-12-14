@@ -1,6 +1,6 @@
 import { PasswordResetConfirmForm } from '../../../../components/forms';
 import type { Metadata } from 'next';
-import { Navbar } from '../../../../components/common';
+import { Navbar, Footer } from '../../../../components/common';
 
 export const metadata: Metadata = {
   title: 'Contexx AI | Password Reset Confirm',
@@ -32,6 +32,8 @@ export default function Page({ params: { uid, token } }: Props) {
           </div>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }

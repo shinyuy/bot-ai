@@ -87,7 +87,7 @@ const ManageChatbots = () => {
     }
 
     return (
-        <div className=" min-h-screen p-4">
+        <div className="min-h-screen h-auto p-4">
             {!create && <> <h1 className="text-4xl font-bold text-gray-800">Manage Your Chatbots</h1>
                 <p className="text-xl text-gray-600 mt-2">Create, edit, or delete your chatbots with ease.</p></>}
 

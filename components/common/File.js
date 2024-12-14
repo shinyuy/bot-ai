@@ -137,7 +137,7 @@ export default function File(props) {
       return props.fileState.uploadedFiles.map((item) => (
         <div
           className="dropzone_box"
-          style={{ margin: '3px', width: isMobile ? '80vw' : 'auto' }}
+          style={{ margin: '3px', width: 'auto' }}
           key={item.public_id}
           onClick={() => onRemove(item.public_id)}
         >
@@ -146,7 +146,7 @@ export default function File(props) {
             style={{
               background: `url(${item.logo}) no-repeat`,
               minWidth: '250px',
-              width: isMobile ? '80vw' : 'auto',
+              width: 'auto',
               height: '250px',
               backgroundSize: 'cover',
               color: 'white',
@@ -187,9 +187,9 @@ export default function File(props) {
           display: 'flex',
           padding: '20px',
           marginTop: '10px',
-          height: isMobile ? '600px' : '300px',
+          height: 'auto',
           border: '2px dotted black',
-          width: isMobile ? '90vw' : 'auto',
+          width: 'auto',
           display: 'flex',
           justifyContent: 'center',
           borderRadius: 10,
@@ -232,7 +232,7 @@ export default function File(props) {
               >
                 <div
                   style={{
-                    width: isMobile ? '80vw' : 'auto',
+                    width: 'auto',
                     height: '250px',
                     display: 'flex',
                     justifyContent: 'center',
@@ -247,7 +247,7 @@ export default function File(props) {
             ) : null}
             {!props.fileState.name && (
               <Dropzone
-                onDrop={(e) => props.onDrop(e)}
+                onDrop={(e) => props.onDrop(e, props.fileState.id)}
                 multiple={false}
                 className="dropzone_box"
                 style={{
@@ -257,7 +257,7 @@ export default function File(props) {
                   flexDirection: 'column',
                   alignItems: 'center',
                   height: '250px',
-                  width: isMobile ? '80vw' : 'auto',
+                  width: '500px',
                   padding: '10px',
                 }}
               >

@@ -1,6 +1,6 @@
 'use client'
 import type { Metadata } from 'next';
-import { Navbar } from '../../components/common';
+import { Navbar, Footer } from '../../components/common';
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutButton from "../../components/common/CheckoutButton"
 import { useState } from 'react';
@@ -218,6 +218,8 @@ export default function Page() {
 
 
       </main>
+
+      <Footer />
     </>
   );
 }

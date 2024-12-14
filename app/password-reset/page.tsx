@@ -1,6 +1,6 @@
 import { PasswordResetForm } from '../../components/forms';
 import type { Metadata } from 'next';
-import { Navbar } from '../../components/common';
+import { Navbar, Footer } from '../../components/common';
 
 export const metadata: Metadata = {
   title: 'Contexx AI | Password Reset',
@@ -24,6 +24,8 @@ export default function Page() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }

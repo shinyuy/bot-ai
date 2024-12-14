@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { Navbar } from '../components/common';
+import { Navbar, Footer } from '../components/common';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
@@ -340,6 +340,8 @@ export default function Page() {
           </button>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }
