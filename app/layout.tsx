@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" >
       <head>
-        {/* <link rel="stylesheet" href="https://f005.backblazeb2.com/file/contexx/Test_style.css" /> */}
+        <link rel="stylesheet" href="https://f005.backblazeb2.com/file/contexx/style.css" />
 
         <title>Contexx AI</title>
       </head>
@@ -42,7 +42,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         </Provider>
 
-        <iframe id='chatbot-ui' src={`${process.env.NEXT_PUBLIC_HOST}/api/static-files/index.html/`}> </iframe>
+        {/* <iframe id='chatbot-ui' src={`${process.env.NEXT_PUBLIC_HOST}/api/static-files/index.html/`}> </iframe> */}
+        <iframe id='chatbot-ui' src={`https://f005.backblazeb2.com/file/contexx/index.html`}> </iframe>
 
       </body>
     </html>
