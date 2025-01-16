@@ -5,18 +5,10 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutButton from "../../components/common/CheckoutButton"
 import { useState } from 'react';
 
-// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-
-
 // export const metadata: Metadata = {
 //   title: 'Contexx AI',
 //   description: 'Contexx AI pricing page',
 // };
-
-
-const stripePromise = loadStripe(
-  `pk_test_51Q3oNJBIOcLjArM10AFEnbxsae4OCMOsfh1pAMGFjBBFDE8Hnbo27p32OmdsXswxRneled5RWC1BwEYNWhdclMmD00G4LFeq3g`
-);
 
 
 export default function Page() {

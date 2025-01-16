@@ -3,11 +3,6 @@ import type { Metadata } from 'next';
 import { Navbar, Footer } from '../../components/common';
 
 
-// export const metadata: Metadata = {
-//   title: 'Contexx AI',
-//   description: 'Contexx AI pricing page',
-// };
-
 export default function Page() {
     return (
         <>

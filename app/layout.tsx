@@ -27,6 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" >
       <head>
         <link rel="stylesheet" href="https://f005.backblazeb2.com/file/contexx/style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        {/* <script src="https://f005.backblazeb2.com/file/contexx/script.js" ></script> */}
 
         <title>Contexx AI</title>
       </head>
@@ -41,11 +43,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Suspense>
 
         </Provider>
-
+        {/* <button className="chatbot-toggler">
+          <span className="material-symbols-outlined">mode_comment</span>
+          <span className="material-symbols-outlined">close</span>
+        </button> */}
         {/* <iframe id='chatbot-ui' src={`${process.env.NEXT_PUBLIC_HOST}/api/static-files/index.html/`}> </iframe> */}
-        <iframe id='chatbot-ui' src={`https://f005.backblazeb2.com/file/contexx/index.html`}> </iframe>
+        <iframe width="auto" height="auto" id='chatbot-ui' src={`https://f005.backblazeb2.com/file/contexx/index.html`}> </iframe>
 
       </body>
     </html>
   );
 }
+
